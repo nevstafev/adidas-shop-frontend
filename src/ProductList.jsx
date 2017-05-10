@@ -1,36 +1,21 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 
+import Sidebar from './sidebar/index';
+
 import './css/fonts.css'
 import './css/normalize.css'
 import './css/flexboxgrid.css'
 import './css/style.css'
-
 import GreyShoe from './image/grey.png'
 import DarkShoe from './image/dark.png'
 import SilverShoe from './image/silver.png'
-import Logo from './image/logo.png'
 
 class ProductList extends Component {
   render() {
     return (
       <div className="product-list-main-container">
-        <aside className="sidebar">
-          <Link className="logo" to="/"><img src={Logo}/></Link>
-          <form className="search" action="#" method="get">
-            <input className="search-input" type="search"/>
-          </form>
-          <nav className="categories">
-            <a className="category category-selected" href="#">Sports</a>
-            <nav className="categories-sub">
-              <a className="category-sub category-sub-selected" href="#">Shoes</a>
-              <a className="category-sub" href="#">Clothing</a>
-              <a className="category-sub" href="#">Accessories</a>
-            </nav>
-            <a className="category" href="#">Brands</a>
-            <a className="category" href="#">Micoach</a>
-          </nav>
-        </aside>
+        <Sidebar/>
         <main className="main-content">
           <nav className="filter">
             <div className="filter-icon">

@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
 
 import './css/fonts.css'
 import './css/normalize.css'
 import './css/flexboxgrid.css'
 import './css/product.css'
 
-import Logo from './image/logo.png'
+import Sidebar from './sidebar/index';
+
 import DarkFrontSide from './image/dark-front.png';
 import DarkPair from './image/dark-pair.jpg';
 import DarkPairBackSide from './image/dark-pair-back.jpg';
@@ -15,23 +15,9 @@ import ProductImage from './image/dark-big.png';
 
 class ProductDetails extends Component {
   render() {
+
     return (<div className="product-main-container">
-      <aside className="sidebar">
-        <Link className="logo" to="./"><img src={Logo}/></Link>
-        <form className="search" action="#" method="get">
-          <input className="search-input" type="search"/>
-        </form>
-        <nav className="categories">
-          <a className="category category-selected" href="#">Sports</a>
-          <nav className="categories-sub">
-            <a className="category-sub category-sub-selected" href="#">Shoes</a>
-            <a className="category-sub" href="#">Clothing</a>
-            <a className="category-sub" href="#">Accessories</a>
-          </nav>
-          <a className="category" href="#">Brands</a>
-          <a className="category" href="#">Micoach</a>
-        </nav>
-      </aside>
+      <Sidebar/>
       <main className="main-content">
         <div className="product">
           <header className="header">
