@@ -5,8 +5,6 @@ import './css/normalize.css'
 import './css/flexboxgrid.css'
 import './css/product.css'
 
-import Sidebar from './sidebar/index';
-
 import DarkFrontSide from './image/dark-front.png';
 import DarkPair from './image/dark-pair.jpg';
 import DarkPairBackSide from './image/dark-pair-back.jpg';
@@ -16,8 +14,7 @@ import ProductImage from './image/dark-big.png';
 class ProductDetails extends Component {
   render() {
 
-    return (<div className="product-main-container">
-      <Sidebar/>
+    return (
       <main className="main-content">
         <div className="product">
           <header className="header">
@@ -56,7 +53,8 @@ class ProductDetails extends Component {
               <p className="product-preview-more-photos">see <br/> more <br/> photos</p>
             </div>
           </div>
-          <p className="product-description"><span className="company-name">Adidas</span> is a German multinational corporation,
+          <p className="product-description"><span className="company-name">Adidas</span> is a German multinational
+            corporation,
             headquartered in
             Herzogenaurach, Germany, that designs and
             manufactures shoes, clothing and accessories.
@@ -68,7 +66,7 @@ class ProductDetails extends Component {
           </button>
         </div>
       </main>
-    </div>);
+    );
 
   }
 }

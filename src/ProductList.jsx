@@ -1,21 +1,17 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
 
-import Sidebar from './sidebar/index';
-
-import './css/fonts.css'
-import './css/normalize.css'
-import './css/flexboxgrid.css'
-import './css/style.css'
-import GreyShoe from './image/grey.png'
-import DarkShoe from './image/dark.png'
-import SilverShoe from './image/silver.png'
+import "./css/fonts.css";
+import "./css/normalize.css";
+import "./css/flexboxgrid.css";
+import "./css/style.css";
+import GreyShoe from "./image/grey.png";
+import DarkShoe from "./image/dark.png";
+import SilverShoe from "./image/silver.png";
 
 class ProductList extends Component {
   render() {
     return (
-      <div className="product-list-main-container">
-        <Sidebar/>
         <main className="main-content">
           <nav className="filter">
             <div className="filter-icon">
@@ -80,7 +76,6 @@ class ProductList extends Component {
             </div>
           </div>
         </main>
-      </div>
     );
   }
 }
