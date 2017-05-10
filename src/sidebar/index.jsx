@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import Logo from './logo.png';
+import Logo from './logo/index';
+import Search from './search/index';
 import './Sidebar.css';
 
 class Sidebar extends Component {
   render() {
     return (<aside className="sidebar">
-      <Link className="logo" to="./"><img src={Logo}/></Link>
-      <form className="search" action="#" method="get">
-        <input className="search-input" type="search"/>
-      </form>
+      <Logo/>
+      <Search/>
       <nav className="categories">
         <a className="category category-selected" href="#">Sports</a>
         <nav className="categories-sub">
