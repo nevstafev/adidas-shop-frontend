@@ -1,0 +1,58 @@
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.filter {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: flex-start;
+  flex: 1 0 100%;
+  padding: 11px 0px;
+  border-bottom: 3px solid #e7e7e7;
+}
+
+.filter-icon {
+  width: 55px;
+  height: 55px;
+  margin-left: 24px;
+  background: url("./filter.png") no-repeat center #ebebeb;
+}
+
+.filter-selected, .filter-gender-button, .filter-size-title, .filter-size-button, .product-link {
+  font-family: "AvenirNext";
+  font-weight: bold;
+  font-size: 24px;
+  color: #d6d6d6;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+}
+
+.filter-selected, .filter-size, .filter-size-title, .filter-gender-button:hover, .filter-size-button:hover {
+  color: #4d42f8;
+}
+
+.filter-gender {
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-gender-button {
+  padding: 0px 5px;
+}
+
+.filter-size {
+  display: flex;
+  align-items: center;
+}
+
+.filter-size-title {
+  padding: 0px 20px;
+}

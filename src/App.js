@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import ProductList from './ProductList';
+import ProductList from './productList/ProductList';
 import ProductDetails from './ProductDetails';
 import Sidebar from "./sidebar/index";
 import './App.css';
