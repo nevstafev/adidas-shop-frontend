@@ -1,13 +1,15 @@
-import React from 'react';
-import Logo from './logo';
-import Search from './search';
-import Categories from "./categories";
-require('./Sidebar.css');
+import React from "react";
+import Logo from "./Logo";
+import Search from "./Search";
+import Categories from "./Сategories";
+import "./styles.css";
 
 export default () => {
-  return (<aside className="sidebar">
-    <Logo/>
-    <Search/>
-    <Categories/>
-  </aside>);
+  return (
+    <aside className="sidebar">
+      <Logo />
+      <Search />
+      <Categories />
+    </aside>
+  );
 };

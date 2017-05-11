@@ -1,5 +1,5 @@
-import React from 'react';
-require('./styles.css');
+import React from "react";
+import "./styles.css";
 
 export default () => {
   return (
@@ -8,4 +8,4 @@ export default () => {
       <button className="filter-gender-button">Woman</button>
     </div>
   );
-}
+};
