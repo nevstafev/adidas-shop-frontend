@@ -1,11 +1,3 @@
-button {
-  cursor: pointer;
-}
-
-button:focus {
-  outline: none;
-}
-
 .sidebar {
   background-color: #0e0e0e;
   flex: 1 0 414px;
@@ -13,59 +5,4 @@ button:focus {
   flex-flow: row wrap;
   justify-content: center;
   align-content: flex-start;
-}
-
-.categories {
-  display: block;
-  text-align: center;
-  text-transform: uppercase;
-  align-self: center;
-  text-decoration: none;
-}
-
-.category, .category-sub {
-  text-decoration: none;
-}
-
-.category {
-  font-family: "AvenirNext";
-  font-size: 24px;
-  font-weight: bold;
-  color: #303030;
-  margin-bottom: 29px;
-  display: block;
-}
-
-.categories-sub {
-  text-align: center;
-}
-
-.category-sub {
-  display: block;
-  font-family: "AndaleMono";
-  font-size: 24px;
-  color: #3c3c3c;
-  margin-bottom: 26px;
-}
-
-.categories-sub .category-sub:first-child {
-  margin-top: 3px;
-}
-
-.categories-sub .category-sub:last-child {
-  margin-bottom: 56px;
-}
-
-.category:hover, .category-selected, .category-sub-selected, .category-sub:hover {
-  color: #ffffff;
-}
-
-.category-selected {
-  position: relative;
-}
-
-.category-selected:after {
-  position: absolute;
-  content: url("../image/group-2.svg");
-  margin-left: 7px;
 }
