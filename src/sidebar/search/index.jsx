@@ -1,12 +1,8 @@
-import React, {Component} from 'react';
-import './Search.css';
+import React from 'react';
+require('./Search.css');
 
-class Search extends Component {
-  render() {
-    return (<form className="search" action="#" method="get">
-      <input className="search-input" type="search"/>
-    </form>);
-  }
-}
-
-export default Search;
+export default () => {
+  return (<form className="search" action="#" method="get">
+    <input className="search-input" type="search"/>
+  </form>);
+};

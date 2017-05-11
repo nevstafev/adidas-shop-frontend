@@ -1,14 +1,11 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
-import "../css/fonts.css";
-import "../css/normalize.css";
-import "../css/flexboxgrid.css";
-import "./ProductList.css";
 import GreyShoe from "./grey.png";
 import DarkShoe from "./dark.png";
 import SilverShoe from "./silver.png";
-import Filter from "./filter/index";
+import Filter from "./filter";
+require("./styles.css");
 
 class ProductList extends Component {
   render() {

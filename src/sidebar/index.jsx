@@ -1,17 +1,13 @@
-import React, {Component} from 'react';
-import Logo from './logo/index';
-import Search from './search/index';
-import './Sidebar.css';
-import Categories from "./categories/index";
+import React from 'react';
+import Logo from './logo';
+import Search from './search';
+import Categories from "./categories";
+require('./Sidebar.css');
 
-class Sidebar extends Component {
-  render() {
-    return (<aside className="sidebar">
-      <Logo/>
-      <Search/>
-      <Categories/>
-    </aside>);
-  }
-}
-
-export default Sidebar;
+export default () => {
+  return (<aside className="sidebar">
+    <Logo/>
+    <Search/>
+    <Categories/>
+  </aside>);
+};

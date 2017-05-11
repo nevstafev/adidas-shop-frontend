@@ -1,12 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import LogoImg from './logo.png';
-import './Logo.css'
+require('./Logo.css');
 
-class Logo extends Component {
-  render() {
-    return (<Link className="logo" to="./"><img src={LogoImg}/></Link>);
-  }
-}
-
-export default Logo;
+export default () => {
+  return (<Link className="logo" to="./"><img src={require('./logo.png')}/></Link>);
+};

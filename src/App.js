@@ -3,10 +3,13 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom'
-import ProductList from './productList/ProductList';
+import ProductList from './productList';
 import ProductDetails from './ProductDetails';
-import Sidebar from "./sidebar/index";
-import './App.css';
+import Sidebar from "./sidebar";
+require('./App.css');
+require("./css/fonts.css");
+require("./css/normalize.css");
+require("./css/flexboxgrid.css");
 
 class App extends Component {
   render() {

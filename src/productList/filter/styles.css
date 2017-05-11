@@ -38,16 +38,6 @@ button:focus {
   color: #4d42f8;
 }
 
-.filter-gender {
-  padding: 0px 30px;
-  display: flex;
-  align-items: center;
-}
-
-.filter-gender-button {
-  padding: 0px 5px;
-}
-
 .filter-size {
   display: flex;
   align-items: center;
