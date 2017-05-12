@@ -1,17 +1,48 @@
 import React from "react";
-import "./styles.css";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Label = styled.span`
+  font-family: "AvenirNext";
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+  padding: 0px 20px;
+  color: #4d42f8;
+`;
+
+const Button = styled.button`
+  font-family: "AvenirNext";
+  font-weight: bold;
+  font-size: 24px;
+  color: #d6d6d6;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  &:hover {
+    color: #4d42f8;
+  }
+`;
+
+const ButtonSelected = styled(Button)`
+  color: #4d42f8;
+`;
 
 export default () => {
   return (
-    <div className="filter-size">
-      <span className="filter-size-title">Size</span>
-      <button className="filter-size-button filter-selected">36</button>
-      <button className="filter-size-button">37</button>
-      <button className="filter-size-button">38</button>
-      <button className="filter-size-button">39</button>
-      <button className="filter-size-button">40</button>
-      <button className="filter-size-button">41</button>
-      <button className="filter-size-button">42</button>
-    </div>
+    <Wrapper>
+      <Label>Size</Label>
+      <ButtonSelected>36</ButtonSelected>
+      <Button>37</Button>
+      <Button>38</Button>
+      <Button>39</Button>
+      <Button>40</Button>
+      <Button>41</Button>
+      <Button>42</Button>
+    </Wrapper>
   );
 };

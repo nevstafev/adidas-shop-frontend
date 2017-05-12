@@ -1,12 +1,27 @@
 import React from "react";
-import "./styles.css";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+`;
+
+const Edge = styled.div`
+  height: 3px;
+  border-radius: 1px;
+  background-color: #e7e7e7;
+  margin-top: 3px;
+  margin-right: 28px;
+  margin-left: 28px;
+`;
 
 export default () => {
   return (
-    <div className="product-preview-separator">
-      <div className="edge" />
-      <div className="edge" />
-      <div className="edge" />
-    </div>
+    <Wrapper>
+      <Edge />
+      <Edge />
+      <Edge />
+    </Wrapper>
   );
 };

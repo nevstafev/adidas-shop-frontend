@@ -1,10 +1,17 @@
 import React from "react";
-import "./styles.css";
+import styled from "styled-components";
+
+const Wrapper = styled.p`
+  font-family: "AvenirNextReg";
+  font-size: 14px;
+  color: #c0c0c0;
+  margin-right: 54px;
+`;
 
 export default () => {
   return (
-    <p className="product-preview-more-photos">
+    <Wrapper>
       see <br /> more <br /> photos
-    </p>
+    </Wrapper>
   );
 };

@@ -1,8 +1,0 @@
-.sidebar {
-  background-color: #0e0e0e;
-  flex: 1 0 414px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: flex-start;
-}
