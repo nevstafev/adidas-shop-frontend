@@ -1,15 +1,51 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import CategorySub from "./Sub";
-import "./styles.css";
+
+const Nav = styled.nav`
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  align-self: center;
+  text-decoration: none;
+`;
+
+const StyledLink = styled(Link)`
+  font-family: "AvenirNext";
+  font-size: 24px;
+  font-weight: bold;
+  color: #303030;
+  text-decoration: none;
+  margin-bottom: 29px;
+  display: block;
+  &:hover {
+    color: #ffffff;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+const StyledLinkSelected = styled(StyledLink)`
+  color: #ffffff;
+  position: relative;
+  &:after {
+    position: absolute;
+    content: url(${require("./group-2.svg")});
+    margin-left: 7px;
+  }
+`;
 
 export default () => {
   return (
-    <nav className="categories">
-      <Link className="category category-selected" to="#">Sports</Link>
+    <Nav>
+      <StyledLinkSelected to="#">
+        Sports
+      </StyledLinkSelected>
       <CategorySub />
-      <Link className="category" to="#">Brands</Link>
-      <Link className="category" to="#">Micoach</Link>
-    </nav>
+      <StyledLink to="#">Brands</StyledLink>
+      <StyledLink to="#">Micoach</StyledLink>
+    </Nav>
   );
 };
