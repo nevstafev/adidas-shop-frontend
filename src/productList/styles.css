@@ -1,0 +1,12 @@
+.main-content {
+  background-color: #ffffff;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  flex: 1 100%;
+}
+
+.product-list {
+  flex-basis: 100%;
+  padding: 22px 24px 0px 24px;
+}

@@ -1,0 +1,53 @@
+button {
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+}
+
+.main-content {
+  display: block;
+}
+
+.product {
+  font-family: "AvenirNext";
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex: 1 100%;
+}
+
+.product-description {
+padding-left: 34px;
+padding-right: 64px;
+padding-bottom: 150px;
+font-family: "AvenirNextReg";
+font-size: 33px;
+font-weight: 800;
+color: #d8d8d8;
+line-height: 1.52;
+}
+
+.company-name {
+color: #6e6e6e;
+}
+
+.product-buy {
+position: fixed;
+z-index: 1;
+bottom: 0;
+left: 414px;
+right: 0px;
+}
+
+.product-buy button {
+font-family: "AvenirNext";
+width: 100%;
+font-size: 32px;
+font-weight: normal;
+text-transform: uppercase;
+color: #ffffff;
+padding-top: 34px;
+padding-bottom: 37px;
+background-image: linear-gradient(to right, #4949aa, #27275d);
+}

@@ -1,0 +1,14 @@
+.product-preview-separator {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.edge {
+  height: 3px;
+  border-radius: 1px;
+  background-color: #e7e7e7;
+  margin-top: 3px;
+  margin-right: 28px;
+  margin-left: 28px;
+}
