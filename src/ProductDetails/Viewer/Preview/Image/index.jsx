@@ -1,12 +1,10 @@
 import React from "react";
 import "./styles.css";
 
-const Image = () => {
+export default () => {
   return (
     <div className="product-preview-image">
       <img src={require("./dark-front.png")} />
     </div>
   );
 };
-
-export default Image;

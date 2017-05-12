@@ -1,8 +1,8 @@
 import React from "react";
-import "./styles.css";
 import Preview from "./Preview";
+import "./styles.css";
 
-const ProductViewer = () => {
+export default () => {
   return (
     <div className="product-info">
       <div className="product-image">
@@ -12,5 +12,3 @@ const ProductViewer = () => {
     </div>
   );
 };
-
-export default ProductViewer;

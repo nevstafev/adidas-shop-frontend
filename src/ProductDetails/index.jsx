@@ -1,7 +1,8 @@
 import React from "react";
-import "./product.css";
 import Header from "./Header";
-import ProductViewer from "./Viewer/index";
+import ProductViewer from "./Viewer";
+import Description from "./Description";
+import "./product.css";
 
 export default () => {
   {
@@ -10,15 +11,7 @@ export default () => {
         <div className="product">
           <Header />
           <ProductViewer />
-          <p className="product-description">
-            <span className="company-name">Adidas</span>
-            {" "}
-            is a German multinational
-            corporation,
-            headquartered in
-            Herzogenaurach, Germany, that designs and
-            manufactures shoes, clothing and accessories.
-          </p>
+          <Description />
         </div>
         <div className="product-buy">
           <button>

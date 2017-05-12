@@ -1,10 +1,10 @@
 import React from "react";
-import "./styles.css";
 import Separator from "./Separator";
-import Image from "./Image/index";
-import MorePhotos from "./MorePhotos/index";
+import Image from "./Image";
+import MorePhotos from "./MorePhotos";
+import "./styles.css";
 
-const Preview = () => {
+export default () => {
   return (
     <div className="product-preview">
       <Image />
@@ -16,5 +16,3 @@ const Preview = () => {
     </div>
   );
 };
-
-export default Preview;

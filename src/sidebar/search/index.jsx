@@ -1,5 +1,5 @@
 import React from "react";
-import "./Search.css";
+import "./index.css";
 
 export default () => {
   return (

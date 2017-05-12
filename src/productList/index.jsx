@@ -1,27 +1,47 @@
 import React from "react";
-import { Row } from "react-flexbox-grid";
+import { Row, Col } from "react-flexbox-grid";
 import Filter from "./Filter";
 import Card from "./Card";
 import "./styles.css";
 
-const ProductList = () => {
+export default () => {
   return (
     <main className="main-content">
       <Filter />
       <div className="product-list">
         <Row>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
+          <Col xs={12} sm={6} md={4}>
+            <Card />
+          </Col>
         </Row>
       </div>
     </main>
   );
 };
-
-export default ProductList;

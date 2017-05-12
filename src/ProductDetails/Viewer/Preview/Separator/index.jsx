@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-const Separator = () => {
+export default () => {
   return (
     <div className="product-preview-separator">
       <div className="edge" />
@@ -10,5 +10,3 @@ const Separator = () => {
     </div>
   );
 };
-
-export default Separator;

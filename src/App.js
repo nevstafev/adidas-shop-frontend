@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import "normalize.css";
 import ProductList from "./ProductList";
 import ProductDetails from "./ProductDetails";
 import Sidebar from "./Sidebar";
+import "normalize.css";
 import "./App.css";
 import "./css/fonts.css";
 
