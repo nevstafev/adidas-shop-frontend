@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-left">
-        <h1>Ultra<br />Boost</h1>
+        <h1 className="product-name">Ultra<br />Boost</h1>
         <button className="save-button">
           Save
         </button>
