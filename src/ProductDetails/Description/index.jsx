@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.p`
   padding-left: 34px;
@@ -16,11 +16,10 @@ const Strong = styled.span`
   color: #6e6e6e;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Strong>Adidas</Strong>
-      {" "}
+export default () => (
+  <Wrapper>
+    <Strong>Adidas</Strong>
+    {' '}
       is a German multinational
       corporation,
       headquartered in
@@ -28,4 +27,3 @@ export default () => {
       manufactures shoes, clothing and accessories.
     </Wrapper>
   );
-};

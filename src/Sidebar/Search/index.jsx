@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Form = styled.form`
   width: 100%;
@@ -16,17 +16,15 @@ const Input = styled.input`
   border-bottom: 4px solid #373737;
   height: 2em;
   opacity: 0.56;
-  background: #0e0e0e url(${require("./group.svg")}) no-repeat 10px 4px;
+  background: #0e0e0e url(${require('./group.svg')}) no-repeat 10px 4px;
   margin-bottom: 100px;
   &:focus {
-  outline: none;
+    outline: none;
   }
 `;
 
-export default () => {
-  return (
-    <Form action="#" method="get">
-      <Input type="search" />
-    </Form>
+export default () => (
+  <Form action="#" method="get">
+    <Input type="search" />
+  </Form>
   );
-};

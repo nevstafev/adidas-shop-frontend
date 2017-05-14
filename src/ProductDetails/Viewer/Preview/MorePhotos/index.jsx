@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.p`
   font-family: "AvenirNextReg";
@@ -8,10 +8,8 @@ const Wrapper = styled.p`
   margin-right: 54px;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
+export default () => (
+  <Wrapper>
       see <br /> more <br /> photos
     </Wrapper>
   );
-};

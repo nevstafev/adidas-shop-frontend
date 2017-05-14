@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.header`
   flex: 0 0 100%;
@@ -95,23 +95,21 @@ const Price = styled.h2`
   margin-top: 35px;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <LeftHeader>
-        <Name>Ultra<br />Boost</Name>
-        <Save>Save</Save>
-      </LeftHeader>
-      <RightHeader>
-        <ColorSelector>
-          <Color color="#c5c5c5" />
-          <Color color="#4d87ca" />
-          <Color color="#4a4a4a" />
-          <Color color="#e0e0e0" />
-          <Sale>sale</Sale>
-        </ColorSelector>
-        <Price>$170</Price>
-      </RightHeader>
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <LeftHeader>
+      <Name>Ultra<br />Boost</Name>
+      <Save>Save</Save>
+    </LeftHeader>
+    <RightHeader>
+      <ColorSelector>
+        <Color color="#c5c5c5" />
+        <Color color="#4d87ca" />
+        <Color color="#4a4a4a" />
+        <Color color="#e0e0e0" />
+        <Sale>sale</Sale>
+      </ColorSelector>
+      <Price>$170</Price>
+    </RightHeader>
+  </Wrapper>
   );
-};

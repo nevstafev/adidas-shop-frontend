@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   background-color: #f4f4f4;
@@ -50,14 +50,12 @@ const SaleLabel = styled.span`
   padding: 7px 20px 6px 21px;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Image src={require("./dark.png")} />
-      <SalePrice to="/product">
+export default () => (
+  <Wrapper>
+    <Image src={require('./dark.png')} />
+    <SalePrice to="/product">
         $170
       </SalePrice>
-      <SaleLabel >sale</SaleLabel>
-    </Wrapper>
+    <SaleLabel >sale</SaleLabel>
+  </Wrapper>
   );
-};

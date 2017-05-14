@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   flex: 1;
@@ -16,12 +16,10 @@ const Edge = styled.div`
   margin-left: 28px;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Edge />
-      <Edge />
-      <Edge />
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <Edge />
+    <Edge />
+    <Edge />
+  </Wrapper>
   );
-};

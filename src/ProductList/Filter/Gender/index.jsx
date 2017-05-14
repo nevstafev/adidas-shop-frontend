@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   padding: 0 30px;
@@ -16,8 +16,12 @@ const Button = styled.button`
   border: none;
   text-transform: uppercase;
   padding: 0px 5px;
+  cursor: pointer;
   &:hover {
     color: #4d42f8;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -25,11 +29,9 @@ const ButtonSelected = styled(Button)`
   color: #4d42f8;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <ButtonSelected>Man</ButtonSelected>
-      <Button>Woman</Button>
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <ButtonSelected>Man</ButtonSelected>
+    <Button>Woman</Button>
+  </Wrapper>
   );
-};

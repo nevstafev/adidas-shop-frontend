@@ -1,6 +1,6 @@
-import React from "react";
-import Preview from "./Preview";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import Preview from './Preview';
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,13 +18,11 @@ const Image = styled.img`
   width: 100%;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <ImageWrapper>
-        <Image src={require("./dark-big.png")} />
-      </ImageWrapper>
-      <Preview />
-    </Wrapper>
-  );
-};
+export default () => (
+  <Wrapper>
+    <ImageWrapper>
+      <Image src={require('./dark-big.png')} />
+    </ImageWrapper>
+    <Preview />
+  </Wrapper>
+);

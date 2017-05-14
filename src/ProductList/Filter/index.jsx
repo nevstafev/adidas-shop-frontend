@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Gender from "./Gender";
-import Size from "./Size";
+import React from 'react';
+import styled from 'styled-components';
+import Gender from './Gender';
+import Size from './Size';
 
 const Nav = styled.nav`
   display: flex;
@@ -18,15 +18,13 @@ const Icon = styled.div`
   width: 55px;
   height: 55px;
   margin-left: 24px;
-  background: url(${require("./filter.png")}) no-repeat center #ebebeb;
+  background: url(${require('./filter.png')}) no-repeat center #ebebeb;
 `;
 
-export default () => {
-  return (
-    <Nav>
-      <Icon />
-      <Gender />
-      <Size />
-    </Nav>
+export default () => (
+  <Nav>
+    <Icon />
+    <Gender />
+    <Size />
+  </Nav>
   );
-};
