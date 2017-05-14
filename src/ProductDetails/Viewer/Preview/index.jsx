@@ -17,7 +17,7 @@ export default () => (
     <Image />
     <Image />
     <Image />
-    <Image />
+    <Image isSelected />
     <Separator />
     <MorePhotos />
   </Wrapper>

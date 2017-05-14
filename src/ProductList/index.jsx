@@ -12,7 +12,7 @@ const Wrapper = styled.main`
   flex: 1 100%;
 `;
 
-const ProductList = styled.div`
+const List = styled.div`
   flex-basis: 100%;
   padding: 22px 24px 0px 24px;
 `;
@@ -20,7 +20,7 @@ const ProductList = styled.div`
 export default () => (
   <Wrapper>
     <Filter />
-    <ProductList>
+    <List>
       <Row>
         <Col xs={12} sm={6} md={4}>
           <Card />
@@ -53,6 +53,6 @@ export default () => (
           <Card />
         </Col>
       </Row>
-    </ProductList>
+    </List>
   </Wrapper>
   );

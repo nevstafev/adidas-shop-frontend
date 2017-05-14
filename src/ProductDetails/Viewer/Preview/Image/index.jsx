@@ -6,20 +6,18 @@ const Wrapper = styled.div`
   margin-left: 34px;
   cursor: pointer;
   flex: 1;
+  outline: ${props => (props.isSelected ? '4px solid #d8d8d8' : 'none')};
   &:hover {
     outline: 4px solid #d8d8d8;
   }
-  outline: ${params => (params.selected ? '4px solid #d8d8d8' : 'none')};
 `;
 
-// todo: correct params
-
-const Image = styled.img`
+const Img = styled.img`
   width: 100%;
 `;
 
 export default () => (
   <Wrapper>
-    <Image src={require('./dark-front.png')} />
+    <Img src={require('./dark-front.png')} />
   </Wrapper>
-  );
+);
