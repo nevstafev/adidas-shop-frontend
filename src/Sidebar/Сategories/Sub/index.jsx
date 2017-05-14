@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Nav = styled.nav`
   text-align: center;
@@ -27,12 +27,10 @@ const StyledLinkSelected = styled(StyledLink)`
   color: #ffffff;
 `;
 
-export default () => {
-  return (
-    <Nav>
-      <StyledLinkSelected to="#">Shoes</StyledLinkSelected>
-      <StyledLink to="#">Clothing</StyledLink>
-      <StyledLink to="#">Accessories</StyledLink>
-    </Nav>
+export default () => (
+  <Nav>
+    <StyledLinkSelected to="#">Shoes</StyledLinkSelected>
+    <StyledLink to="#">Clothing</StyledLink>
+    <StyledLink to="#">Accessories</StyledLink>
+  </Nav>
   );
-};

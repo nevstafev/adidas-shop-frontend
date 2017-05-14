@@ -1,8 +1,8 @@
-import React from "react";
-import { Row, Col } from "react-flexbox-grid";
-import styled from "styled-components";
-import Filter from "./Filter";
-import Card from "./Card";
+import React from 'react';
+import { Row, Col } from 'react-flexbox-grid';
+import styled from 'styled-components';
+import Filter from './Filter';
+import Card from './Card';
 
 const Wrapper = styled.main`
   background-color: #ffffff;
@@ -17,44 +17,42 @@ const ProductList = styled.div`
   padding: 22px 24px 0px 24px;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Filter />
-      <ProductList>
-        <Row>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-          <Col xs={12} sm={6} md={4}>
-            <Card />
-          </Col>
-        </Row>
-      </ProductList>
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <Filter />
+    <ProductList>
+      <Row>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+        <Col xs={12} sm={6} md={4}>
+          <Card />
+        </Col>
+      </Row>
+    </ProductList>
+  </Wrapper>
   );
-};

@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -32,17 +32,15 @@ const ButtonSelected = styled(Button)`
   color: #4d42f8;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Label>Size</Label>
-      <ButtonSelected>36</ButtonSelected>
-      <Button>37</Button>
-      <Button>38</Button>
-      <Button>39</Button>
-      <Button>40</Button>
-      <Button>41</Button>
-      <Button>42</Button>
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <Label>Size</Label>
+    <ButtonSelected>36</ButtonSelected>
+    <Button>37</Button>
+    <Button>38</Button>
+    <Button>39</Button>
+    <Button>40</Button>
+    <Button>41</Button>
+    <Button>42</Button>
+  </Wrapper>
   );
-};

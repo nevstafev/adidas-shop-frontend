@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Separator from "./Separator";
-import Image from "./Image";
-import MorePhotos from "./MorePhotos";
+import React from 'react';
+import styled from 'styled-components';
+import Separator from './Separator';
+import Image from './Image';
+import MorePhotos from './MorePhotos';
 
 const Wrapper = styled.div`
   flex: 1 0 100%;
@@ -12,15 +12,13 @@ const Wrapper = styled.div`
   justify-content: space-around; 
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Image />
-      <Image />
-      <Image />
-      <Image />
-      <Separator />
-      <MorePhotos />
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <Image />
+    <Image />
+    <Image />
+    <Image />
+    <Separator />
+    <MorePhotos />
+  </Wrapper>
   );
-};

@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
   display: block;
@@ -13,6 +13,4 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export default () => {
-  return <StyledLink to="./"><img src={require("./logo.png")} /></StyledLink>;
-};
+export default () => <StyledLink to="./"><img src={require('./logo.png')} alt="" /></StyledLink>;

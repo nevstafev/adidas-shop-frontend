@@ -14,8 +14,8 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^5.0.1",
-    "eslint-plugin-react": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.9.0",
     "husky": "^0.13.3",
     "react-scripts": "0.9.5"
   },
@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "$(npm bin)/eslint src",
+    "lint": "eslint src --ext=js,jsx",
     "prepush": "npm run lint"
   }
 }

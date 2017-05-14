@@ -1,8 +1,8 @@
-import React from "react";
-import Header from "./Header";
-import ProductViewer from "./Viewer";
-import Description from "./Description";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import Header from './Header';
+import ProductViewer from './Viewer';
+import Description from './Description';
 
 const Wrapper = styled.main`
   display: block;
@@ -40,21 +40,17 @@ const Button = styled.button`
   outline: none;
 `;
 
-export default () => {
-  {
-    return (
-      <Wrapper>
-        <ProductWrapepr>
-          <Header />
-          <ProductViewer />
-          <Description />
-        </ProductWrapepr>
-        <BuyWrapper>
-          <Button>
-            Buy now
-          </Button>
-        </BuyWrapper>
-      </Wrapper>
-    );
-  }
-};
+export default () => (
+  <Wrapper>
+    <ProductWrapepr>
+      <Header />
+      <ProductViewer />
+      <Description />
+    </ProductWrapepr>
+    <BuyWrapper>
+      <Button>
+        Buy now
+      </Button>
+    </BuyWrapper>
+  </Wrapper>
+);

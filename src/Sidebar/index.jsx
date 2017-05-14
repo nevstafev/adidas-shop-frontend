@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Logo from "./Logo";
-import Search from "./Search";
-import Categories from "./Сategories";
+import React from 'react';
+import styled from 'styled-components';
+import Logo from './Logo';
+import Search from './Search';
+import Categories from './Сategories';
 
 const Wrapper = styled.aside`
   background-color: #0e0e0e;
@@ -13,12 +13,10 @@ const Wrapper = styled.aside`
   align-content: flex-start;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Logo />
-      <Search />
-      <Categories />
-    </Wrapper>
+export default () => (
+  <Wrapper>
+    <Logo />
+    <Search />
+    <Categories />
+  </Wrapper>
   );
-};
