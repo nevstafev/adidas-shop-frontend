@@ -1,3 +1,4 @@
+![](https://travis-ci.org/nevstafev/adidas-shop-frontend.svg?branch=master)
 # adidas-shop-frontend
 `npm start`
 Runs the app in the development mode.
