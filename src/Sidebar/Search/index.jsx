@@ -19,7 +19,7 @@ const Input = styled.input`
   background: #0e0e0e url(${require('./group.svg')}) no-repeat 10px 4px;
   margin-bottom: 100px;
   &:focus {
-  outline: none;
+    outline: none;
   }
 `;
 

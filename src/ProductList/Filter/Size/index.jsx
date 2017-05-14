@@ -23,9 +23,14 @@ const Button = styled.button`
   background-color: transparent;
   border: none;
   text-transform: uppercase;
+  cursor: pointer;
   &:hover {
     color: #4d42f8;
   }
+  &:focus {
+    outline: none;
+  }
+  
 `;
 
 const ButtonSelected = styled(Button)`

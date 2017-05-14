@@ -16,8 +16,12 @@ const Button = styled.button`
   border: none;
   text-transform: uppercase;
   padding: 0px 5px;
+  cursor: pointer;
   &:hover {
     color: #4d42f8;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
