@@ -4,12 +4,15 @@ import styled from 'styled-components';
 const Wrapper = styled.p`
   padding-left: 15px;
   padding-right: 15px;
-  font: bold 20px/1.4 AvenirNextReg;
+  font-family: AvenirNextReg;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.4;
   color: #d8d8d8;
   padding-bottom: 80px;
   @media screen and (min-width: 768px) {
-    padding-left: 34px;
-    padding-right: 64px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 150px;
     font-family: "AvenirNextReg";
     font-size: 33px;

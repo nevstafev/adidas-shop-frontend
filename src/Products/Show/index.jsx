@@ -25,7 +25,7 @@ const View = styled.div`
   flex: 0 0 100%;
 `;
 
-const ButtonWraper = styled.div`
+const ButtonWrapper = styled.div`
   position: fixed;
   bottom: 0px;
   left: 0px;
@@ -42,7 +42,10 @@ const ButtonWraper = styled.div`
 const Button = styled.button`
   padding-top: 25px;
   padding-bottom: 25px;
-  font: normal 20px/1.35 AvenirNext;
+  font-family: AvenirNext;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 1.35'
   color: #ffffff;
   text-transform: uppercase;
   border: none;
@@ -52,8 +55,8 @@ const Button = styled.button`
   @media screen and (min-width: 768px) {
     font-size: 32px;
     color: #ffffff;
-    padding-top: 34px;
-    padding-bottom: 37px;
+    padding-top: 35px;
+    padding-bottom: 35px;
     cursor: pointer;
     text-transform: uppercase;
   }
@@ -69,10 +72,10 @@ export default () => (
       </View>
       <Description />
     </Product>
-    <ButtonWraper>
+    <ButtonWrapper>
       <Button>
       Buy now
       </Button>
-    </ButtonWraper>
+    </ButtonWrapper>
   </Wrapper>
 );

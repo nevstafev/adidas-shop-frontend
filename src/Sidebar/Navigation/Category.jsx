@@ -7,7 +7,7 @@ const Category = styled(Link)`
   font-weight: bold;
   color: #303030;
   text-decoration: none;
-  margin-bottom: 29px;
+  margin-bottom: 30px;
   display: block;
   &:hover {
     color: #ffffff;
@@ -23,7 +23,7 @@ const CategorySelected = styled(Category)`
   &:after {
     position: absolute;
     content: url(${require('./collapse.svg')});
-    margin-left: 7px;
+    margin-left: 5px;
   }
 `;
 

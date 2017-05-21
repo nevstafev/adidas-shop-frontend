@@ -7,7 +7,7 @@ const Subcategory = styled(Link)`
   font-size: 24px;
   text-decoration: none;
   color: #3c3c3c;
-  margin-bottom: 26px;
+  margin-bottom: 25px;
   &:hover {
     color: #ffffff;
   }

@@ -32,7 +32,10 @@ const LeftHeader = styled.div`
 
 const Name = styled.h1`
   margin: 0px;
-  font: bold 36px/1 AvenirNext;
+  font-family: AvenirNext;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1;
   text-transform: uppercase;
   color: #393939;
   @media screen and (min-width: 768px) {
@@ -98,7 +101,7 @@ const Color = styled.button`
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  margin-right: 13px;
+  margin-right: 12px;
   background-color: ${param => param.color};
   cursor: pointer;
   text-transform: uppercase;
@@ -119,7 +122,10 @@ const Price = styled.h2`
   padding-bottom: 15px;
   padding-top: 10px;
   margin: 0px;
-  font: bold 80px/1 AvenirNext;
+  font-family: AvenirNext;
+  font-size: 80px;
+  font-weight: bold;
+  line-height: 1;
   color: #e2e2e2;
   @media screen and (min-width:768px) {  
     margin-top: 35px;

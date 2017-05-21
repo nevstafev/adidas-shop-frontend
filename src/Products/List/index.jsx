@@ -24,7 +24,7 @@ const Filter = styled.nav`
     flex-flow: row nowrap;
     align-items: center;
     justify-content: flex-start;
-    padding: 11px 0;
+    padding: 10px 0;
     align-self: flex-start;
     flex: 1 0 100%;
   }

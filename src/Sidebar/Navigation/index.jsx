@@ -17,8 +17,7 @@ const Categories = styled.nav`
 
 const Subcategories = styled.nav`
   text-align: center;
-  margin-top: 3px;
-  margin-bottom: 56px;
+  margin-bottom: 50px;
 `;
 
 export default () =>

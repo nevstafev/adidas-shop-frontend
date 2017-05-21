@@ -18,15 +18,18 @@ const Wrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  font: bold 30px/1.366 "AvenirNext";
+  font-family: AvenirNext;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.366;
   text-decoration: none;
   color: #0d0d0d;
   text-align: center;
   background-color: #ffffff;
   flex: 1 100%;
-  padding-top: 23px;
-  padding-bottom: 27px;
-  margin-top: 8px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 6px;
 `;
 
 const SalePrice = styled(StyledLink)`
@@ -40,7 +43,7 @@ const Sale = styled(Label)`
   right: 20px;
   padding: 10px 25px;
   @media screen and (min-width: 768px) {
-    top: 17px;
+    top: 20px;
     right: 20px;
     padding: 5px 20px;
   }
