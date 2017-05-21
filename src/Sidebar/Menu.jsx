@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../utils/media';
+
 const Menu = styled.button`
   width: 55px;
   height: 30px;
@@ -9,9 +11,9 @@ const Menu = styled.button`
   align-self: center;
   background: url(${require('./menu.svg')}) no-repeat center;
   border: none;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     display: none;
-  }
+  `}
 `;
 
-export default () => (<Menu />);
+export default () => <Menu />;

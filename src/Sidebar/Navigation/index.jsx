@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../../utils/media';
 import { Category, CategorySelected } from './Category';
 import { Subcategory, SubcategorySelected } from './Subcategory';
 
 const Categories = styled.nav`
   display: none;
   text-decoration: none;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     display: block;
     text-align: center;
     text-transform: uppercase;
     align-self: center;
-  }
+  `}
 `;
 
 const Subcategories = styled.nav`

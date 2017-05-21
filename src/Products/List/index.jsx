@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
+import media from './../../utils/media';
 import Card from './Card';
 import Button from './Filters/Button';
 import Label from './Filters/Label';
@@ -19,7 +20,7 @@ const Filter = styled.nav`
   width: 100%;
   padding: 80px 15px 15px 15px;
   border-bottom: 3px solid #e7e7e7;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -27,7 +28,7 @@ const Filter = styled.nav`
     padding: 10px 0;
     align-self: flex-start;
     flex: 1 0 100%;
-  }
+  `}
 `;
 
 const Icon = styled.div`
@@ -37,18 +38,18 @@ const Icon = styled.div`
   margin-left: 25px;
   margin-right: 30px;
   background: url(${require('./filter.png')}) no-repeat center #ebebeb;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     display: block;
-  }
+  `}
 `;
 
 const Gender = styled.div`
   display: flex;
   padding-bottom: 10px;
   align-items: center;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     padding-bottom: 0;
-  }
+  `}
 `;
 
 const GenderButton = styled(Button)`
@@ -67,9 +68,9 @@ const SizeButton = styled(Button)`
 const List = styled.div`
   flex-basis: 100%;
   padding: 15px 15px 0 15px;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     padding: 16px 25px 10px 25px;
-  }
+  `}
 `;
 
 export default () => (

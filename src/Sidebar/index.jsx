@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../utils/media';
 import Logo from './Logo';
 import Search from './Search';
 import Navigation from './Navigation';
@@ -15,7 +16,7 @@ const Wrapper = styled.aside`
   display: flex;
   justify-content: space-between;
   background-color: #0e0e0e;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     position: static;
     height: initial;
     display: flex;
@@ -23,10 +24,10 @@ const Wrapper = styled.aside`
     justify-content: center;
     align-content: flex-start;
     flex: 1 0 327px;
-  }
-  @media screen and (min-width: 1024px) {
+  `}
+  ${media.medium`
     flex: 1 0 414px;
-  }
+  `}
 `;
 
 export default () => (

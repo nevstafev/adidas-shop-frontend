@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../../utils/media';
 import Header from './Header';
 import Cover from './Gallery/Cover';
 import Description from './Description';
@@ -31,12 +32,12 @@ const ButtonWrapper = styled.div`
   left: 0px;
   right: 0px;
   z-index: 1;
-  @media screen and (min-width: 768px) {
-    left: 327px;
+  ${media.small`
+    left: 327px;`
   }
-  @media screen and (min-width: 1024px) {
+  ${media.medium`
     left: 414px;
-  }
+  `}
 `;
 
 const Button = styled.button`
@@ -52,14 +53,14 @@ const Button = styled.button`
   outline: none;
   width: 100%;
   background-image: linear-gradient(to right, #4949aa, #27275d);
-  @media screen and (min-width: 768px) {
+  ${media.small`
     font-size: 32px;
     color: #ffffff;
     padding-top: 35px;
     padding-bottom: 35px;
     cursor: pointer;
     text-transform: uppercase;
-  }
+  `}
 `;
 
 export default () => (

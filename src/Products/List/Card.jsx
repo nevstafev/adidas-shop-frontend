@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import media from '../../utils/media';
 import Image from '../../components/Image';
 import Label from '../../components/Label';
 
@@ -12,9 +13,9 @@ const Wrapper = styled.div`
   margin-bottom: 30px;
   flex-flow: column nowrap;
   background-color: #f4f4f4;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     margin: 4px 4px 20px 4px;
-  }
+  `}
 `;
 
 const StyledLink = styled(Link)`
@@ -42,19 +43,19 @@ const Sale = styled(Label)`
   top: 20px;
   right: 20px;
   padding: 10px 25px;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     top: 20px;
     right: 20px;
     padding: 5px 20px;
-  }
+  `}
 `;
 
 export default () => (
   <Wrapper>
     <Image src={require('./dark.png')} />
     <SalePrice to="/product">
-        $170
-      </SalePrice>
+      $170
+    </SalePrice>
     <Sale>Sale</Sale>
   </Wrapper>
-  );
+);
