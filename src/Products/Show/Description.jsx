@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../../utils/media';
+
 const Wrapper = styled.p`
   padding-left: 15px;
   padding-right: 15px;
@@ -10,7 +12,7 @@ const Wrapper = styled.p`
   line-height: 1.4;
   color: #d8d8d8;
   padding-bottom: 80px;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 150px;
@@ -19,7 +21,7 @@ const Wrapper = styled.p`
     font-weight: 800;
     color: #d8d8d8;
     line-height: 1.52;  
-  }
+  `}
 `;
 
 const Strong = styled.span`

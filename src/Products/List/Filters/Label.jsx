@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import media from './../../../utils/media';
+
 export default styled.span`
   padding-right: 20px;
   font-family: AvenirNext;
@@ -7,8 +9,8 @@ export default styled.span`
   line-height: 1.375;
   text-transform: uppercase;
   color: #4d42f8;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     padding-left: 35px;
     padding-right: 20px;
-  }
+  `}
 `;

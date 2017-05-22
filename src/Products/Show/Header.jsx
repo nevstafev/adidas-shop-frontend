@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../../utils/media';
 import Label from '../../components/Label';
 
 const Wrapper = styled.header`
@@ -10,24 +11,24 @@ const Wrapper = styled.header`
   flex-flow: row wrap;
   justify-content: space-between;
   padding-top: 100px;
-  @media screen and (min-width:768px) {
+  ${media.small`
     flex-flow: row nowrap;
     padding-top: 25px;
     max-height: 40px;
     z-index: 1;
     position: relative;
-  }
+  `}
 `;
 
 const LeftHeader = styled.div`
   position: relative;
   padding-left: 15px;
-  @media screen and (min-width:768px) {
+  ${media.small`
     max-width: 230px;
     display: flex;
     flex-flow: column wrap;
     padding-left: 28px;
-  }
+  `}
 `;
 
 const Name = styled.h1`
@@ -38,12 +39,12 @@ const Name = styled.h1`
   line-height: 1;
   text-transform: uppercase;
   color: #393939;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     overflow-wrap: break-word;
     font-size: 64px;
     margin-bottom: 25px;
     margin-top: 0px;
-  }
+  `}
 `;
 
 const Save = styled.button`
@@ -66,9 +67,9 @@ const Save = styled.button`
   &:hover {
     background-color: #4d42f8;
   }
-  @media screen and (min-width: 768px) {
+  ${media.small`
     display: inline;
-  }
+  `}
 `;
 
 const RightHeader = styled.div`
@@ -77,13 +78,13 @@ const RightHeader = styled.div`
   flex: 100%;
   padding-right: 15px;
   padding-left: 15px;
-  @media screen and (min-width:768px) {
+  ${media.small`
     z-index: 2;
     position: absolute;
     top: 35px;
     right: 37px;
     flex-flow: column nowrap;
-  }
+  `}
 `;
 
 const ColorSelector = styled.div`
@@ -91,10 +92,10 @@ const ColorSelector = styled.div`
   flex-flow: row-reverse nowrap;
   justify-content: flex-start;
   align-items: center;
-  @media screen and (min-width:768px) {
+  ${media.small`
     flex-flow: row nowrap;
     justify-content: flex-end;
-  }
+  `}
 `;
 
 const Color = styled.button`
@@ -112,10 +113,10 @@ const Color = styled.button`
 const Sale = styled(Label)`
   margin-right: auto;
   padding: 7px 20px 6px 21px;
-  @media screen and (min-width:768px) {  
+  ${media.small` 
     margin-left: 17px;
     margin-right: 0;
-  }
+  `}
 `;
 
 const Price = styled.h2`
@@ -127,9 +128,9 @@ const Price = styled.h2`
   font-weight: bold;
   line-height: 1;
   color: #e2e2e2;
-  @media screen and (min-width:768px) {  
+  ${media.small`  
     margin-top: 35px;
-  }
+  `}
 `;
 
 export default () => (

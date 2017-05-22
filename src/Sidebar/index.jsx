@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import media from './../utils/media';
 import Logo from './Logo';
 import Search from './Search';
 import Navigation from './Navigation';
@@ -16,17 +17,17 @@ const Wrapper = styled.aside`
   flex-flow: row wrap;
   justify-content: center;
   background-color: #0e0e0e;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     position: static;
     height: initial;
     display: flex;
     justify-content: center;
     align-content: flex-start;
     flex: 1 0 327px;
-  }
-  @media screen and (min-width: 1024px) {
+  `}
+  ${media.medium`
     flex: 1 0 414px;
-  }
+  `}
 `;
 
 class Sidebar extends Component {

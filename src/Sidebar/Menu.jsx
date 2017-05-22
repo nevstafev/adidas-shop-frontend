@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../utils/media';
+
 const Menu = styled.button`
   width: 55px;
   height: 30px;
@@ -9,10 +11,10 @@ const Menu = styled.button`
   align-self: center;
   background: url(${require('./menu.svg')}) no-repeat center;
   border: none;
-  outline: none;
-  @media screen and (min-width: 768px) {
+  margin-right: auto;
+  ${media.small`
     display: none;
-  }
+  `}
 `;
 
 export default props => (<Menu onClick={props.switchMenuState} />);

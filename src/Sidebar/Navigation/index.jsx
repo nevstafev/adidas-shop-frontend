@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import media from './../../utils/media';
 import { Category, CategorySelected } from './Category';
 import { Subcategory, SubcategorySelected } from './Subcategory';
 
@@ -9,11 +10,12 @@ const Categories = styled.nav`
     return props.isVisible ? 'block' : 'none';
   }};
   text-decoration: none;
-  text-align: center;
-  @media screen and (min-width: 768px) {
+  ${media.small`
+    display: block;
+    text-align: center;
     text-transform: uppercase;
     align-self: center;
-  }
+  `}
 `;
 
 const Subcategories = styled.nav`

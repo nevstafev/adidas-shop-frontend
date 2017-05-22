@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import 'normalize.css';
 
+import media from './utils/media';
 import ProductList from './Products/List';
 import ProductDetails from './Products/Show';
 import Sidebar from './Sidebar';
@@ -13,10 +14,10 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0px;
   display: block;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     display: flex;
     flex-flow: row nowrap;
-  }
+  `}
 `;
 
 export default () => (

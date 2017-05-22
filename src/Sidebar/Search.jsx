@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import media from './../utils/media';
+
 const Form = styled.form`
   display: ${function (props) {
     return props.isVisible ? 'block' : 'none';
   }};
   width: 100%;
   padding: 0 20px;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     display: inline;
     align-self: flex-start;
-  }
+  `}
 `;
 
 const Input = styled.input`
