@@ -2,8 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import 'normalize.css';
-import ProductList from './ProductList';
-import ProductDetails from './ProductDetails';
+
+import media from './utils/media';
+import ProductList from './Products/List';
+import ProductDetails from './Products/Show';
 import Sidebar from './Sidebar';
 import './css/fonts.css';
 
@@ -11,8 +13,11 @@ const Wrapper = styled.div`
   min-height: 100vh;
   width: 100%;
   margin: 0px;
-  display: flex;
-  flex-flow: row nowrap;
+  display: block;
+  ${media.small`
+    display: flex;
+    flex-flow: row nowrap;
+  `}
 `;
 
 export default () => (
