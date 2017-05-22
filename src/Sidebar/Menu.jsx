@@ -11,7 +11,7 @@ const Menu = styled.button`
   align-self: center;
   background: url(${require('./menu.svg')}) no-repeat center;
   border: none;
-  margin-right: auto;
+  outline: none;
   ${media.small`
     display: none;
   `}

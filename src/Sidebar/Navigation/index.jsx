@@ -10,9 +10,9 @@ const Categories = styled.nav`
     return props.isVisible ? 'block' : 'none';
   }};
   text-decoration: none;
+  text-align: center;
   ${media.small`
     display: block;
-    text-align: center;
     text-transform: uppercase;
     align-self: center;
   `}
