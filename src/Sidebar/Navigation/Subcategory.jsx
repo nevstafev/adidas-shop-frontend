@@ -7,12 +7,15 @@ const Subcategory = styled(Link)`
   font-size: 24px;
   text-decoration: none;
   color: #3c3c3c;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   &:hover {
     color: #ffffff;
   }
   &:focus {
     outline: none;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 25px;
   }
 `;
 

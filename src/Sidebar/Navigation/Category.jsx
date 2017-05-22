@@ -7,13 +7,16 @@ const Category = styled(Link)`
   font-weight: bold;
   color: #303030;
   text-decoration: none;
-  margin-bottom: 30px;
   display: block;
+  margin-bottom: 10px;
   &:hover {
     color: #ffffff;
   }
   &:focus {
     outline: none;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 30px;
   }
 `;
 

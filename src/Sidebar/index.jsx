@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Logo from './Logo';
@@ -13,13 +13,13 @@ const Wrapper = styled.aside`
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  justify-content: center;
   background-color: #0e0e0e;
   @media screen and (min-width: 768px) {
     position: static;
     height: initial;
     display: flex;
-    flex-flow: row wrap;
     justify-content: center;
     align-content: flex-start;
     flex: 1 0 327px;
@@ -29,11 +29,25 @@ const Wrapper = styled.aside`
   }
 `;
 
-export default () => (
-  <Wrapper>
-    <Logo />
-    <Menu />
-    <Search />
-    <Navigation />
-  </Wrapper>
-  );
+class Sidebar extends Component {
+  constructor() {
+    super();
+    this.state = { isMenuContentVisible: false };
+    this.switchMenuVisibleState = this.switchMenuVisibleState.bind(this);
+  }
+
+  switchMenuVisibleState() {
+    this.setState(prevState => ({ isMenuContentVisible: !prevState.isMenuContentVisible }));
+  }
+
+  render() {
+    return (<Wrapper>
+      <Logo />
+      <Menu switchMenuState={this.switchMenuVisibleState} />
+      <Search isVisible={this.state.isMenuContentVisible} />
+      <Navigation isVisible={this.state.isMenuContentVisible} />
+    </Wrapper>);
+  }
+}
+
+export default Sidebar;

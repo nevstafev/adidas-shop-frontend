@@ -9,9 +9,10 @@ const Menu = styled.button`
   align-self: center;
   background: url(${require('./menu.svg')}) no-repeat center;
   border: none;
+  outline: none;
   @media screen and (min-width: 768px) {
     display: none;
   }
 `;
 
-export default () => (<Menu />);
+export default props => (<Menu onClick={props.switchMenuState} />);

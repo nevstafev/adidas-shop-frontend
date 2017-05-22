@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Form = styled.form`
-  display: none;
+  display: ${function (props) {
+    return props.isVisible ? 'block' : 'none';
+  }};
   width: 100%;
   padding: 0 20px;
   @media screen and (min-width: 768px) {
@@ -14,6 +16,7 @@ const Form = styled.form`
 const Input = styled.input`
   width: 100%;
   color: #fff;
+  margin-bottom: 10px;
   padding-left: 55px;
   font-size: 24px;
   border: 0;
@@ -21,14 +24,16 @@ const Input = styled.input`
   height: 2em;
   opacity: 0.56;
   background: #0e0e0e url(${require('./search.svg')}) no-repeat 10px 4px;
-  margin-bottom: 100px;
   &:focus {
     outline: none;
   }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 100px;
+  }
 `;
 
-export default () => (
-  <Form action="#" method="get">
+export default props => (
+  <Form isVisible={props.isVisible} action="#" method="get">
     <Input type="search" />
   </Form>
   );

@@ -8,6 +8,7 @@ const StyledLink = styled(Link)`
   }
   align-self: center;
   margin: 15px;
+  margin-right: auto;
   @media screen and (min-width: 768px) {
     margin-top: 40px;
     margin-bottom: 30px;
