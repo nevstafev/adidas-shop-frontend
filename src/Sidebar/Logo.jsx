@@ -10,7 +10,9 @@ const StyledLink = styled(Link)`
   }
   align-self: center;
   margin: 15px;
-  ${media.small`margin-top: 40px;
+  margin-right: auto;
+  ${media.small`
+    margin-top: 40px;
     margin-bottom: 30px;
     margin-right: 0;
     align-self: flex-start;`}
@@ -25,4 +27,6 @@ const Image = styled.img`
   `}  
 `;
 
-export default () => <StyledLink to="./"><Image src={require('./logo.svg')} alt="" /></StyledLink>;
+export default () => (
+  <StyledLink to="./"><Image src={require('./logo.svg')} alt="" /></StyledLink>
+);

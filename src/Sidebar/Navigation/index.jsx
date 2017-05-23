@@ -2,35 +2,36 @@ import React from 'react';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
-import { Category, CategorySelected } from './Category';
-import { Subcategory, SubcategorySelected } from './Subcategory';
+import Link from './Link';
+import Menu from './Menu';
 
-const Categories = styled.nav`
-  display: none;
+const Wrapper = styled.nav`
+  display: block;
   text-decoration: none;
+  text-align: center;
   ${media.small`
     display: block;
-    text-align: center;
     text-transform: uppercase;
     align-self: center;
   `}
 `;
 
-const Subcategories = styled.nav`
-  text-align: center;
-  margin-bottom: 50px;
-`;
-
-export default () =>
-  (
-    <Categories>
-      <CategorySelected to="#">Sports</CategorySelected>
-      <Subcategories>
-        <SubcategorySelected to="#">Shoes</SubcategorySelected>
-        <Subcategory to="#">Clothing</Subcategory>
-        <Subcategory to="#">Accessories</Subcategory>
-      </Subcategories>
-      <Category to="#">Brands</Category>
-      <Category to="#">Micoach</Category>
-    </Categories>);
-
+export default () => (
+  <Wrapper>
+    <Menu title="Football">
+      <Link to="#">Shoes</Link>
+      <Link to="#">Clothing</Link>
+      <Link to="#">Accessories</Link>
+    </Menu>
+    <Menu title="Running">
+      <Link to="#">Shoes</Link>
+      <Link to="#">Clothing</Link>
+      <Link to="#">Accessories</Link>
+    </Menu>
+    <Menu title="Basketball">
+      <Link to="#">Shoes</Link>
+      <Link to="#">Clothing</Link>
+      <Link to="#">Accessories</Link>
+    </Menu>
+  </Wrapper>
+);

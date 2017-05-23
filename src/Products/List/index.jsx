@@ -75,7 +75,7 @@ const List = styled.div`
 
 export default () => (
   <Wrapper>
-    <Filter >
+    <Filter>
       <Icon />
       <Gender>
         <GenderButton>Man</GenderButton>
@@ -127,4 +127,4 @@ export default () => (
       </Row>
     </List>
   </Wrapper>
-  );
+);

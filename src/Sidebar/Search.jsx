@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import media from './../utils/media';
 
 const Form = styled.form`
-  display: none;
-  width: 100%;
-  padding: 0 20px;
+  display: block;
   ${media.small`
     display: inline;
     align-self: flex-start;
@@ -16,6 +14,7 @@ const Form = styled.form`
 const Input = styled.input`
   width: 100%;
   color: #fff;
+  margin-bottom: 10px;
   padding-left: 55px;
   font-size: 24px;
   border: 0;
@@ -23,14 +22,16 @@ const Input = styled.input`
   height: 2em;
   opacity: 0.56;
   background: #0e0e0e url(${require('./search.svg')}) no-repeat 10px 4px;
-  margin-bottom: 100px;
   &:focus {
     outline: none;
   }
+  ${media.small`
+    margin-bottom: 100px;
+  `}
 `;
 
 export default () => (
   <Form action="#" method="get">
     <Input type="search" />
   </Form>
-  );
+);

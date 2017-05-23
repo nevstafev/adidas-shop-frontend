@@ -1,23 +1,22 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Subcategory = styled(Link)`
+import media from './../../utils/media';
+
+export default styled(Link)`
   display: block;
   font-family: "AndaleMono";
   font-size: 24px;
   text-decoration: none;
   color: #3c3c3c;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   &:hover {
     color: #ffffff;
   }
   &:focus {
     outline: none;
   }
+  ${media.small`
+    margin-bottom: 25px;
+  `}
 `;
-
-const SubcategorySelected = styled(Subcategory)`
-  color: #ffffff;
-`;
-
-export { Subcategory, SubcategorySelected };

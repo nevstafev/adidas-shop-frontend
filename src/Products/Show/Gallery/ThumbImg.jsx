@@ -32,4 +32,4 @@ export default () => (
     <ThumbImg><Image src={require('./dark-pair.jpg')} /></ThumbImg>
     <ThumbImg><Image src={require('./dark-pair-left-side.png')} /></ThumbImg>
   </ThumbNails>
-  );
+);
