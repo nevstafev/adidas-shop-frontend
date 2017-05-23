@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
@@ -16,36 +16,22 @@ const Wrapper = styled.nav`
   `}
 `;
 
-class Navigation extends Component {
-  constructor() {
-    super();
-    this.state = {
-      selectedMenu: '',
-      selectedSubcategory: '',
-    };
-  }
-
-  render() {
-    return (
-      <Wrapper isVisible={this.props.isVisible}>
-        <Menu title="Football">
-          <Link to="#">Shoes</Link>
-          <Link to="#">Clothing</Link>
-          <Link to="#">Accessories</Link>
-        </Menu>
-        <Menu title="Running">
-          <Link to="#">Shoes</Link>
-          <Link to="#">Clothing</Link>
-          <Link to="#">Accessories</Link>
-        </Menu>
-        <Menu title="Basketball">
-          <Link to="#">Shoes</Link>
-          <Link to="#">Clothing</Link>
-          <Link to="#">Accessories</Link>
-        </Menu>
-      </Wrapper>
-    );
-  }
-}
-
-export default Navigation;
+export default () => (
+  <Wrapper>
+    <Menu title="Football">
+      <Link to="#">Shoes</Link>
+      <Link to="#">Clothing</Link>
+      <Link to="#">Accessories</Link>
+    </Menu>
+    <Menu title="Running">
+      <Link to="#">Shoes</Link>
+      <Link to="#">Clothing</Link>
+      <Link to="#">Accessories</Link>
+    </Menu>
+    <Menu title="Basketball">
+      <Link to="#">Shoes</Link>
+      <Link to="#">Clothing</Link>
+      <Link to="#">Accessories</Link>
+    </Menu>
+  </Wrapper>
+);

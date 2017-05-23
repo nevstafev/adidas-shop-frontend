@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import media from './../../utils/media';
 
-const Category = styled.button`
+const Button = styled.button`
   font-family: "AvenirNext";
   font-size: 24px;
   font-weight: bold;
@@ -17,10 +17,11 @@ const Category = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
+  position: relative;
+  cursor: pointer;
   &:focus {
     outline: none;
   }
-  position: relative;
   &:after {
     display: inline-block;
     position: absolute;
@@ -57,9 +58,9 @@ class Menu extends Component {
   render() {
     return (
       <div>
-        <Category isOpened={this.state.isOpened} onClick={this.toggle}>
+        <Button isOpened={this.state.isOpened} onClick={this.toggle}>
           {this.props.title}
-        </Category>
+        </Button>
         {this.state.isOpened &&
           <Subcategories>{this.props.children}</Subcategories>}
       </div>

@@ -5,7 +5,6 @@ import media from './../utils/media';
 
 const Form = styled.form`
   display: block;
-  padding: 0 20px;
   ${media.small`
     display: inline;
     align-self: flex-start;
