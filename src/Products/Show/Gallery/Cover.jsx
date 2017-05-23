@@ -8,8 +8,8 @@ const ImageWrapper = styled.div`
   flex: 2 0 100%;
 `;
 
-export default () => (
+export default props => (
   <ImageWrapper>
-    <Image src={require('./dark-big.png')} />
+    <Image src={require(`${props.image}`)} />
   </ImageWrapper>
 );

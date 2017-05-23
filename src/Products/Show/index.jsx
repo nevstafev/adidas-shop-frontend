@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 import media from './../../utils/media';
 import Header from './Header';
-import Cover from './Gallery/Cover';
 import Description from './Description';
-import ThumbImg from './Gallery/ThumbImg';
+import Carousel from './Gallery/Carousel';
 
 const Wrapper = styled.main`
   display: block;
@@ -17,13 +16,6 @@ const Product = styled.div`
   flex-flow: row wrap;
   justify-content: center;
   flex: 1 100%; 
-`;
-
-const View = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  flex: 0 0 100%;
 `;
 
 const ButtonWrapper = styled.div`
@@ -66,10 +58,14 @@ export default () => (
   <Wrapper>
     <Product>
       <Header />
-      <View>
-        <Cover />
-        <ThumbImg />
-      </View>
+      <Carousel
+        images={[
+          './dark-front.png',
+          './dark-pair-back.jpg',
+          './dark-pair.jpg',
+          './dark-pair-left-side.png',
+        ]}
+      />
       <Description />
     </Product>
     <ButtonWrapper>

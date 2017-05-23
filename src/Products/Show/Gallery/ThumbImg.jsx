@@ -19,17 +19,21 @@ const ThumbImg = styled.button`
   flex: 1 0 100%;
   background-color: transparent;
   outline: none
-  border: 4px solid transparent;
+  border: 4px solid ${props => (props.selected ? '#d8d8d8' : 'transparent')};
   &:hover {
     border-color: #d8d8d8;
   }
 `;
 
-export default () => (
+export default props => (
   <ThumbNails>
-    <ThumbImg><Image src={require('./dark-front.png')} /></ThumbImg>
-    <ThumbImg><Image src={require('./dark-pair-back.jpg')} /></ThumbImg>
-    <ThumbImg><Image src={require('./dark-pair.jpg')} /></ThumbImg>
-    <ThumbImg><Image src={require('./dark-pair-left-side.png')} /></ThumbImg>
+    {props.images.map((img, index) =>
+      (<ThumbImg
+        key={img}
+        selected={index === props.selected}
+        onClick={() => props.select(index)}
+      >
+        <Image src={require(`${img}`)} />
+      </ThumbImg>))}
   </ThumbNails>
 );
