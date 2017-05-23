@@ -32,10 +32,10 @@ export default () => (
   <Wrapper>
     <Strong>Adidas</Strong>
     {' '}
-      is a German multinational
-      corporation,
-      headquartered in
-      Herzogenaurach, Germany, that designs and
-      manufactures shoes, clothing and accessories.
-    </Wrapper>
-  );
+    is a German multinational
+    corporation,
+    headquartered in
+    Herzogenaurach, Germany, that designs and
+    manufactures shoes, clothing and accessories.
+  </Wrapper>
+);

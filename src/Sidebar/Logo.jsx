@@ -27,4 +27,6 @@ const Image = styled.img`
   `}  
 `;
 
-export default () => <StyledLink to="./"><Image src={require('./logo.svg')} alt="" /></StyledLink>;
+export default () => (
+  <StyledLink to="./"><Image src={require('./logo.svg')} alt="" /></StyledLink>
+);

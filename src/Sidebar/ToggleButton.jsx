@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import media from './../utils/media';
 
-const Menu = styled.button`
+const ToggleButton = styled.button`
   width: 55px;
   height: 30px;
   margin: 15px;
@@ -17,4 +17,4 @@ const Menu = styled.button`
   `}
 `;
 
-export default props => (<Menu onClick={props.switchMenuState} />);
+export default props => <ToggleButton onClick={props.toggle} />;

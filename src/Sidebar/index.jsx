@@ -5,9 +5,9 @@ import media from './../utils/media';
 import Logo from './Logo';
 import Search from './Search';
 import Navigation from './Navigation';
-import Menu from './Menu';
+import ToggleButton from './ToggleButton';
 
-const Wrapper = styled.aside`
+const Aside = styled.aside`
   position: fixed;
   z-index: 1;
   top: 0;
@@ -20,8 +20,6 @@ const Wrapper = styled.aside`
   ${media.small`
     position: static;
     height: initial;
-    display: flex;
-    justify-content: center;
     align-content: flex-start;
     flex: 1 0 327px;
   `}
@@ -30,24 +28,37 @@ const Wrapper = styled.aside`
   `}
 `;
 
+const Wrapper = styled.div`
+  display: ${props => (props.isVisible ? 'block' : 'none')};
+  ${media.small`
+    display: block;
+  `}
+`;
+
 class Sidebar extends Component {
   constructor() {
     super();
-    this.state = { isMenuContentVisible: false };
-    this.switchMenuVisibleState = this.switchMenuVisibleState.bind(this);
+    this.state = { isVisible: false };
+    this.toggle = this.toggle.bind(this);
   }
 
-  switchMenuVisibleState() {
-    this.setState(prevState => ({ isMenuContentVisible: !prevState.isMenuContentVisible }));
+  toggle() {
+    this.setState(prevState => ({
+      isVisible: !prevState.isVisible,
+    }));
   }
 
   render() {
-    return (<Wrapper>
-      <Logo />
-      <Menu switchMenuState={this.switchMenuVisibleState} />
-      <Search isVisible={this.state.isMenuContentVisible} />
-      <Navigation isVisible={this.state.isMenuContentVisible} />
-    </Wrapper>);
+    return (
+      <Aside>
+        <Logo />
+        <ToggleButton toggle={this.toggle} />
+        <Wrapper isVisible={this.state.isVisible}>
+          <Search />
+          <Navigation />
+        </Wrapper>
+      </Aside>
+    );
   }
 }
 

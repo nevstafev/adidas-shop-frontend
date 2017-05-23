@@ -6,9 +6,7 @@ import Link from './Link';
 import Menu from './Menu';
 
 const Wrapper = styled.nav`
-  display: ${function (props) {
-    return props.isVisible ? 'block' : 'none';
-  }};
+  display: block;
   text-decoration: none;
   text-align: center;
   ${media.small`

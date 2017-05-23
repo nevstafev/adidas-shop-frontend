@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import media from './../utils/media';
 
 const Form = styled.form`
-  display: ${function (props) {
-    return props.isVisible ? 'block' : 'none';
-  }};
-  width: 100%;
+  display: block;
   padding: 0 20px;
   ${media.small`
     display: inline;
@@ -29,13 +26,13 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-  @media screen and (min-width: 768px) {
+  ${media.small`
     margin-bottom: 100px;
-  }
+  `}
 `;
 
-export default props => (
-  <Form isVisible={props.isVisible} action="#" method="get">
+export default () => (
+  <Form action="#" method="get">
     <Input type="search" />
   </Form>
-  );
+);

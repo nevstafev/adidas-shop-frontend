@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import media from './../../utils/media';
+
 export default styled(Link)`
   display: block;
   font-family: "AndaleMono";
@@ -14,7 +16,7 @@ export default styled(Link)`
   &:focus {
     outline: none;
   }
-  @media screen and (min-width: 768px) {
+  ${media.small`
     margin-bottom: 25px;
-  }
+  `}
 `;

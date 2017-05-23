@@ -33,8 +33,7 @@ const ButtonWrapper = styled.div`
   right: 0px;
   z-index: 1;
   ${media.small`
-    left: 327px;`
-  }
+    left: 327px;`}
   ${media.medium`
     left: 414px;
   `}
@@ -75,7 +74,7 @@ export default () => (
     </Product>
     <ButtonWrapper>
       <Button>
-      Buy now
+        Buy now
       </Button>
     </ButtonWrapper>
   </Wrapper>

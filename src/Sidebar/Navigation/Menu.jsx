@@ -7,7 +7,7 @@ const Category = styled.button`
   font-family: "AvenirNext";
   font-size: 24px;
   font-weight: bold;
-  color: ${function (props) { return props.isSelected ? '#ffffff' : '#303030'; }};
+  color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   display: block;
@@ -17,21 +17,17 @@ const Category = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
-  &:hover {
-    color: #ffffff;
-  }
   &:focus {
     outline: none;
   }
   position: relative;
-  ${props => props.isSelected &&
-  `&:after {
+  &:after {
     display: inline-block;
     position: absolute;
     content: url(${require('./collapse.svg')});
-    transform: rotate(180deg);
+    ${props => props.isOpened && 'transform: rotate(180deg)'};
     margin-left: 5px;
-  }`}
+  }
   ${media.small`
     margin-bottom: 30px;
   `}
@@ -42,32 +38,30 @@ const Subcategories = styled.nav`
   margin-bottom: 10px;
   transition-property: all;
   transition-duration: 1s;
-  @media screen and (min-width: 768px) {
+  ${media.small`
     margin-bottom: 50px;
-  }
+  `}
 `;
 
 class Menu extends Component {
   constructor() {
     super();
-    this.state = { isSelected: false };
-    this.toggleSelection = this.toggleSelection.bind(this);
+    this.state = { isOpened: false };
+    this.toggle = this.toggle.bind(this);
   }
 
-  toggleSelection() {
-    this.setState(prevState => ({ isSelected: !prevState.isSelected }));
+  toggle() {
+    this.setState(prevState => ({ isOpened: !prevState.isOpened }));
   }
 
   render() {
     return (
       <div>
-        <Category
-          isSelected={this.state.isSelected}
-          onClick={this.toggleSelection}
-        >
+        <Category isOpened={this.state.isOpened} onClick={this.toggle}>
           {this.props.title}
         </Category>
-        {this.state.isSelected && <Subcategories>{this.props.children}</Subcategories>}
+        {this.state.isOpened &&
+          <Subcategories>{this.props.children}</Subcategories>}
       </div>
     );
   }
