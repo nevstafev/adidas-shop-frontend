@@ -155,7 +155,11 @@ class Header extends Component {
         <RightHeader>
           <ColorSelector>
             {colors.map((color, index) => (
-              <Color key={color} color={color} onClick={() => this.setColor(index)} />
+              <Color
+                key={color}
+                color={color}
+                onClick={() => this.setColor(index)}
+              />
             ))}
             <Sale>Sale</Sale>
           </ColorSelector>
