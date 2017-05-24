@@ -2,8 +2,7 @@
   "extends": "airbnb",
   "rules" : {
     "global-require": 0,
-    "react/prop-types": 0,
-    "import/no-dynamic-require": 0
+    "react/prop-types": 0
   },
   "env": {
     "browser": true

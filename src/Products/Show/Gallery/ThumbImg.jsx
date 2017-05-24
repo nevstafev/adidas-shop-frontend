@@ -19,7 +19,7 @@ const ThumbImg = styled.button`
   flex: 1 0 100%;
   background-color: transparent;
   outline: none
-  border: 4px solid ${props => (props.selected ? '#d8d8d8' : 'transparent')};
+  border: 4px solid ${props => (props.isSelected ? '#d8d8d8' : 'transparent')};
   &:hover {
     border-color: #d8d8d8;
   }
@@ -30,10 +30,10 @@ export default props => (
     {props.images.map((img, index) =>
       (<ThumbImg
         key={img}
-        selected={index === props.selected}
-        onClick={() => props.select(index)}
+        isSelected={index === props.selected}
+        onClick={() => props.onSelect(index)}
       >
-        <Image src={require(`${img}`)} />
+        <Image src={img} />
       </ThumbImg>))}
   </ThumbNails>
 );

@@ -54,17 +54,19 @@ const Button = styled.button`
   `}
 `;
 
+const images = [
+  require('./dark-big.png'),
+  require('./dark-pair-back.jpg'),
+  require('./dark-pair.jpg'),
+  require('./dark-pair-left-side.png'),
+];
+
 export default () => (
   <Wrapper>
     <Product>
       <Header />
       <Carousel
-        images={[
-          './dark-front.png',
-          './dark-pair-back.jpg',
-          './dark-pair.jpg',
-          './dark-pair-left-side.png',
-        ]}
+        images={images}
       />
       <Description />
     </Product>

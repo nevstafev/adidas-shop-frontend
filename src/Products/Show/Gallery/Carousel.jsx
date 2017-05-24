@@ -17,10 +17,10 @@ class Carousel extends Component {
     this.state = {
       selected: 0,
     };
-    this.select = this.select.bind(this);
+    this.onSelect = this.onSelect.bind(this);
   }
 
-  select(selected) {
+  onSelect(selected) {
     this.setState({ selected });
   }
 
@@ -28,7 +28,11 @@ class Carousel extends Component {
     return (
       <Wrapper>
         <Cover image={this.props.images[this.state.selected]} />
-        <ThumbImg images={this.props.images} selected={this.state.selected} select={this.select} />
+        <ThumbImg
+          images={this.props.images}
+          selected={this.state.selected}
+          onSelect={this.onSelect}
+        />
       </Wrapper>
     );
   }
