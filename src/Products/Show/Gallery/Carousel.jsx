@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Cover from './Cover';
-import ThumbImg from './ThumbImg';
+import ThumbNails from './ThumbNails';
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,10 +17,10 @@ class Carousel extends Component {
     this.state = {
       selected: 0,
     };
-    this.onSelect = this.onSelect.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
-  onSelect(selected) {
+  handleSelect(selected) {
     this.setState({ selected });
   }
 
@@ -28,10 +28,10 @@ class Carousel extends Component {
     return (
       <Wrapper>
         <Cover image={this.props.images[this.state.selected]} />
-        <ThumbImg
+        <ThumbNails
           images={this.props.images}
           selected={this.state.selected}
-          onSelect={this.onSelect}
+          handleSelect={this.handleSelect}
         />
       </Wrapper>
     );

@@ -65,9 +65,7 @@ export default () => (
   <Wrapper>
     <Product>
       <Header />
-      <Carousel
-        images={images}
-      />
+      <Carousel images={images} />
       <Description />
     </Product>
     <ButtonWrapper>

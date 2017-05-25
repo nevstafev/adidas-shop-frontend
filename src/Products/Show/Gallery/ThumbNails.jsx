@@ -25,15 +25,20 @@ const ThumbImg = styled.button`
   }
 `;
 
-export default props => (
-  <ThumbNails>
-    {props.images.map((img, index) =>
-      (<ThumbImg
-        key={img}
-        isSelected={index === props.selected}
-        onClick={() => props.onSelect(index)}
-      >
-        <Image src={img} />
-      </ThumbImg>))}
-  </ThumbNails>
-);
+export default (props) => {
+  const thumbImages = props.images.map((img, index) => (
+    <ThumbImg
+      key={img}
+      isSelected={index === props.selected}
+      onClick={() => props.handleSelect(index)}
+    >
+      <Image src={img} />
+    </ThumbImg>
+  ));
+
+  return (
+    <ThumbNails>
+      {thumbImages}
+    </ThumbNails>
+  );
+};
