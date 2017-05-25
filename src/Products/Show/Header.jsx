@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
@@ -56,7 +56,7 @@ const Save = styled.button`
   font-weight: bold;
   text-transform: uppercase;
   border-radius: 50%;
-  background-color: #e3e3e3;
+  background-color: ${props => props.color};
   position: absolute;
   top: 168px;
   left: 28px;
@@ -64,9 +64,6 @@ const Save = styled.button`
   text-transform: uppercase;
   border: none;
   outline: none;
-  &:hover {
-    background-color: #4d42f8;
-  }
   ${media.small`
     display: inline;
   `}
@@ -87,7 +84,7 @@ const RightHeader = styled.div`
   `}
 `;
 
-const ColorSelector = styled.div`
+const Top = styled.div`
   display: flex;
   flex-flow: row-reverse nowrap;
   justify-content: flex-start;
@@ -127,27 +124,52 @@ const Price = styled.h2`
   font-size: 80px;
   font-weight: bold;
   line-height: 1;
-  color: #e2e2e2;
+  color: ${props => props.color};
   ${media.small`  
     margin-top: 35px;
   `}
 `;
 
-export default () => (
-  <Wrapper>
-    <LeftHeader>
-      <Name>Ultra Boost</Name>
-      <Save>Save</Save>
-    </LeftHeader>
-    <RightHeader>
-      <ColorSelector>
-        <Color color="#c5c5c5" />
-        <Color color="#4d87ca" />
-        <Color color="#4a4a4a" />
-        <Color color="#e0e0e0" />
-        <Sale>Sale</Sale>
-      </ColorSelector>
-      <Price>$170</Price>
-    </RightHeader>
-  </Wrapper>
-);
+const colors = ['#c5c5c5', '#4d87ca', '#4a4a4a', '#e0e0e0'];
+
+class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      color: 0,
+    };
+    this.handleColorChange = this.handleColorChange.bind(this);
+  }
+
+  handleColorChange(color) {
+    this.setState({ color });
+  }
+
+  render() {
+    const selectedColor = colors[this.state.color];
+
+    return (
+      <Wrapper>
+        <LeftHeader>
+          <Name>Ultra Boost</Name>
+          <Save color={selectedColor}>Save</Save>
+        </LeftHeader>
+        <RightHeader>
+          <Top>
+            {colors.map((color, index) => (
+              <Color
+                key={color}
+                color={color}
+                onClick={() => this.handleColorChange(index)}
+              />
+            ))}
+            <Sale>Sale</Sale>
+          </Top>
+          <Price color={selectedColor}>$170</Price>
+        </RightHeader>
+      </Wrapper>
+    );
+  }
+}
+
+export default Header;
