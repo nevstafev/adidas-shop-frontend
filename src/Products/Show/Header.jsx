@@ -84,7 +84,7 @@ const RightHeader = styled.div`
   `}
 `;
 
-const ColorSelector = styled.div`
+const Top = styled.div`
   display: flex;
   flex-flow: row-reverse nowrap;
   justify-content: flex-start;
@@ -124,7 +124,7 @@ const Price = styled.h2`
   font-size: 80px;
   font-weight: bold;
   line-height: 1;
-  color: ${param => param.color};
+  color: ${props => props.color};
   ${media.small`  
     margin-top: 35px;
   `}
@@ -138,32 +138,34 @@ class Header extends Component {
     this.state = {
       color: 0,
     };
-    this.setColor = this.setColor.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
   }
 
-  setColor(color) {
+  handleColorChange(color) {
     this.setState({ color });
   }
 
   render() {
+    const selectedColor = colors[this.state.color];
+
     return (
       <Wrapper>
         <LeftHeader>
           <Name>Ultra Boost</Name>
-          <Save color={colors[this.state.color]}>Save</Save>
+          <Save color={selectedColor}>Save</Save>
         </LeftHeader>
         <RightHeader>
-          <ColorSelector>
+          <Top>
             {colors.map((color, index) => (
               <Color
                 key={color}
                 color={color}
-                onClick={() => this.setColor(index)}
+                onClick={() => this.handleColorChange(index)}
               />
             ))}
             <Sale>Sale</Sale>
-          </ColorSelector>
-          <Price color={colors[this.state.color]}>$170</Price>
+          </Top>
+          <Price color={selectedColor}>$170</Price>
         </RightHeader>
       </Wrapper>
     );
