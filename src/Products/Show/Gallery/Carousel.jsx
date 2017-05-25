@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Cover from './Cover';
-import ThumbNail from './Thumbnail';
+import Thumbnail from './Thumbnail';
 import ThumbImg from './Thumbnail/Image';
 import Image from '../../../components/Image';
 
@@ -27,23 +27,20 @@ class Carousel extends Component {
   }
 
   render() {
-    const thumbImages = this.props.images.map(
-      (img, index) => (
-        <ThumbImg
-          key={img}
-          isSelected={index === this.state.selected}
-          onClick={() => this.handleSelect(index)}
-        >
-          <Image src={img} />
-        </ThumbImg>
-      ), this);
-
     return (
       <Wrapper>
         <Cover image={this.props.images[this.state.selected]} />
-        <ThumbNail>
-          {thumbImages}
-        </ThumbNail>
+        <Thumbnail>
+          {this.props.images.map((img, index) => (
+            <ThumbImg
+              key={img}
+              isSelected={index === this.state.selected}
+              onClick={() => this.handleSelect(index)}
+            >
+              <Image src={img} />
+            </ThumbImg>
+            ), this)}
+        </Thumbnail>
       </Wrapper>
     );
   }
