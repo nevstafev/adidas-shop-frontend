@@ -73,6 +73,8 @@ const List = styled.div`
   `}
 `;
 
+const CardCol = props => <Col xs={12} sm={6} md={4}>{props.children}</Col>;
+
 export default () => (
   <Wrapper>
     <Filter>
@@ -94,36 +96,24 @@ export default () => (
     </Filter>
     <List>
       <Row>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
-        <Col xs={12} sm={6} md={4}>
-          <Card />
-        </Col>
+        <CardCol>
+          <Card isSale to="id" />
+        </CardCol>
+        <CardCol>
+          <Card to="id" />
+        </CardCol>
+        <CardCol>
+          <Card isSale to="id" />
+        </CardCol>
+        <CardCol>
+          <Card isSale to="id" />
+        </CardCol>
+        <CardCol>
+          <Card isSale to="id" />
+        </CardCol>
+        <CardCol>
+          <Card isSale to="id" />
+        </CardCol>
       </Row>
     </List>
   </Wrapper>

@@ -48,18 +48,19 @@ const Subcategories = styled.nav`
 class Menu extends Component {
   constructor(props) {
     super(props);
-    this.state = { isOpened: props.location.pathname.indexOf(props.title.toLowerCase()) > -1 };
-    this.handleOpen = this.handleOpen.bind(this);
+    const isOpened = props.location.pathname.indexOf(props.title.toLowerCase()) > -1;
+    this.state = { isOpened };
+    this.toggle = this.toggle.bind(this);
   }
 
-  handleOpen() {
+  toggle() {
     this.setState(prevState => ({ isOpened: !prevState.isOpened }));
   }
 
   render() {
     return (
       <div>
-        <Button isOpened={this.state.isOpened} onClick={this.handleOpen}>
+        <Button isOpened={this.state.isOpened} onClick={this.toggle}>
           {this.props.title}
         </Button>
         {this.state.isOpened &&
