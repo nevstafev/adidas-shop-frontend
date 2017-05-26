@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import media from '../../utils/media';
-import Image from '../../components/Image';
 import Label from '../../components/Label';
+
+const Image = styled.img`
+  width: 100%;
+`;
 
 const Wrapper = styled.div`
   position: relative;
