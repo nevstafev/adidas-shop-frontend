@@ -19,19 +19,19 @@ const Wrapper = styled.nav`
 export default () => (
   <Wrapper>
     <Menu title="Football">
-      <Link to="#">Shoes</Link>
-      <Link to="#">Clothing</Link>
-      <Link to="#">Accessories</Link>
+      <Link to="/products/football/shoes/">Shoes</Link>
+      <Link to="/products/football/clothing/">Clothing</Link>
+      <Link to="/products/football/accessories/">Accessories</Link>
     </Menu>
     <Menu title="Running">
-      <Link to="#">Shoes</Link>
-      <Link to="#">Clothing</Link>
-      <Link to="#">Accessories</Link>
+      <Link to="/products/running/shoes/">Shoes</Link>
+      <Link to="/products/running/clothing/">Clothing</Link>
+      <Link to="/products/running/accessories/">Accessories</Link>
     </Menu>
     <Menu title="Basketball">
-      <Link to="#">Shoes</Link>
-      <Link to="#">Clothing</Link>
-      <Link to="#">Accessories</Link>
+      <Link to="/products/basketball/shoes/">Shoes</Link>
+      <Link to="/products/basketball/clothing/">Clothing</Link>
+      <Link to="/products/basketball/accessories/">Accessories</Link>
     </Menu>
   </Wrapper>
 );

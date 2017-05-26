@@ -56,7 +56,7 @@ const Sale = styled(Label)`
 export default () => (
   <Wrapper>
     <Image src={require('./dark.png')} />
-    <SalePrice to="/product">
+    <SalePrice to="123">
       $170
     </SalePrice>
     <Sale>Sale</Sale>
