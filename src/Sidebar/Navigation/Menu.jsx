@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
@@ -48,8 +47,7 @@ const Subcategories = styled.nav`
 class Menu extends Component {
   constructor(props) {
     super(props);
-    const isOpened = props.location.pathname.indexOf(props.title.toLowerCase()) > -1;
-    this.state = { isOpened };
+    this.state = { isOpened: false };
     this.toggle = this.toggle.bind(this);
   }
 
@@ -70,4 +68,4 @@ class Menu extends Component {
   }
 }
 
-export default withRouter(Menu);
+export default Menu;
