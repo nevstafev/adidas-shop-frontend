@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Image = styled.button`
+const Button = styled.button`
   box-sizing: padding-box;
   margin: 5px;
   max-width: 18%;
@@ -14,4 +14,4 @@ const Image = styled.button`
   }
 `;
 
-export default Image;
+export default Button;

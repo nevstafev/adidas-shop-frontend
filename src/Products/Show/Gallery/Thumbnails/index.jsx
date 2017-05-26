@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Thumbnails = styled.div`
   flex: 1 0 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -9,4 +9,4 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export default props => <Wrapper>{props.children}</Wrapper>;
+export default props => <Thumbnails>{props.children}</Thumbnails>;

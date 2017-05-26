@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Cover from './Cover';
-import Thumbnail from './Thumbnail';
-import ThumbImg from './Thumbnail/Image';
+import Thumbnails from './Thumbnails';
+import Button from './Thumbnails/Button';
 import Image from '../../../components/Image';
 
 const Wrapper = styled.div`
@@ -30,17 +30,17 @@ class Carousel extends Component {
     return (
       <Wrapper>
         <Cover image={this.props.images[this.state.selected]} />
-        <Thumbnail>
+        <Thumbnails>
           {this.props.images.map((img, index) => (
-            <ThumbImg
+            <Button
               key={img}
               isSelected={index === this.state.selected}
               onClick={() => this.handleSelect(index)}
             >
               <Image src={img} />
-            </ThumbImg>
-            ), this)}
-        </Thumbnail>
+            </Button>
+          ))}
+        </Thumbnails>
       </Wrapper>
     );
   }
