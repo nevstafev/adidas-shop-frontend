@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
 
-export default styled(Link)`
+export default styled(NavLink)`
   display: block;
   font-family: "AndaleMono";
   font-size: 24px;
@@ -15,6 +15,9 @@ export default styled(Link)`
   }
   &:focus {
     outline: none;
+  }
+  &.active {
+    color: #ffffff;
   }
   ${media.small`
     margin-bottom: 25px;

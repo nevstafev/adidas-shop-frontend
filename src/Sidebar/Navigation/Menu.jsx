@@ -45,8 +45,8 @@ const Subcategories = styled.nav`
 `;
 
 class Menu extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { isOpened: false };
     this.toggle = this.toggle.bind(this);
   }

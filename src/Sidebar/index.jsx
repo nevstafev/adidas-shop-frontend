@@ -22,9 +22,11 @@ const Aside = styled.aside`
     height: initial;
     align-content: flex-start;
     flex: 1 0 327px;
+    max-width: 327px;
   `}
   ${media.medium`
     flex: 1 0 414px;
+    max-width: 414px;
   `}
 `;
 

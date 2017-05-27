@@ -22,23 +22,20 @@ const Wrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+
   font-family: AvenirNext;
   font-size: 30px;
   font-weight: bold;
   line-height: 1.366;
   text-decoration: none;
-  color: #0d0d0d;
-  text-align: center;
+  color: ${props => (props.isSale ? '#ffffff' : '#0d0d0d')};
   background-color: #ffffff;
+  ${props => props.isSale && 'background-image: linear-gradient(107deg, #0c09bf, #966dd8)'};
+  text-align: center;
   flex: 1 100%;
   padding-top: 25px;
   padding-bottom: 25px;
   margin-top: 6px;
-`;
-
-const SalePrice = styled(StyledLink)`
-  background-image: linear-gradient(107deg, #0c09bf, #966dd8);
-  color: #ffffff;
 `;
 
 const Sale = styled(Label)`
@@ -53,12 +50,12 @@ const Sale = styled(Label)`
   `}
 `;
 
-export default () => (
+export default props => (
   <Wrapper>
     <Image src={require('./dark.png')} />
-    <SalePrice to="/product">
+    <StyledLink isSale={props.isSale} to={props.to}>
       $170
-    </SalePrice>
-    <Sale>Sale</Sale>
+    </StyledLink>
+    {props.isSale && <Sale>Sale</Sale>}
   </Wrapper>
 );
