@@ -31,6 +31,8 @@ const Aside = styled.aside`
 `;
 
 const Wrapper = styled.div`
+  margin: 0 20px;
+  width: 100%;
   display: ${props => (props.isVisible ? 'block' : 'none')};
   ${media.small`
     display: block;
