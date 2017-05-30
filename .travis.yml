@@ -8,4 +8,4 @@ before_script:
 script:
   - npm run lint
 after_success:
-  - npm i -g now && now -t=$NOW_TOKEN --npm && now -t=$NOW_TOKEN alias
+  - now -p -t=$NOW_TOKEN nevstafev-adidas-shop
