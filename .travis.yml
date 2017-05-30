@@ -7,4 +7,5 @@ before_script:
   - npm install -g now
 script:
   - npm run lint
-  - now -t $NOW_TOKEN
+after-success:
+  - npm i -g now && now -t=$NOW_TOKEN --npm && now -t=$NOW_TOKEN alias
