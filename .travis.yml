@@ -6,4 +6,7 @@ before_install:
 install:
   - npm install
 script:
-  - npm run lint && npm run build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
+  - npm run lint
+deploy:
+  on: feat/add-ci-deploy
+  script: npm run build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
