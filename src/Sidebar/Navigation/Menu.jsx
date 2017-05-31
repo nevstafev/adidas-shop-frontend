@@ -26,8 +26,9 @@ const Button = styled.button`
     display: inline-block;
     position: absolute;
     content: url(${require('./collapse.svg')});
-    ${props => props.isOpened && 'transform: rotate(180deg)'};
     margin-left: 5px;
+    margin-top: -3px;
+    ${props => props.isOpened && 'transform: rotate(180deg); margin-top: 3px'};
   }
   ${media.small`
     margin-bottom: 30px;
