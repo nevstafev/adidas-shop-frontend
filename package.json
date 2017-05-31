@@ -27,5 +27,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint src --ext=js,jsx",
     "prepush": "npm run lint"
+  },
+  "now": {
+    "alias": "nevstafev-adidas-shop"
   }
 }
