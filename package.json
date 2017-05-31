@@ -29,6 +29,7 @@
     "prepush": "npm run lint"
   },
   "now": {
+    "name": "build",
     "alias": "nevstafev-adidas-shop"
   }
 }

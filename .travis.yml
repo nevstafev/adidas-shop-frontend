@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - "node"
+before_install:
+  - npm install -g now
 install:
   - npm install
-before_script:
-  - npm install -g now
 script:
   - npm run lint && npm run build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
