@@ -6,4 +6,4 @@ install:
 before_script:
   - npm install -g now
 script:
-  - npm run lint && npm run build && now -p -t $NOW_TOKEN build && now alias -t $NOW_TOKEN
+  - npm run lint && npm run build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
