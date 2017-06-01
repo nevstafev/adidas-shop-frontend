@@ -6,10 +6,10 @@ before_install:
 install:
   - npm install
 script:
-  - npm run lint
+  - prepush
 deploy:
-  on: master
+  on: feat/add-ci-deploy
   provider: script
   skip_cleanup: true
   script:
-    - npm run build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN
+    - deploy
