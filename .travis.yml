@@ -6,10 +6,10 @@ before_install:
 install:
   - npm install
 script:
-  - npm prepush
+  - npm run prepush
 deploy:
   on: feat/add-ci-deploy
   provider: script
   skip_cleanup: true
   script:
-    - npm deploy
+    - npm run deploy
