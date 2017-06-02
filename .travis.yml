@@ -6,7 +6,7 @@ before_install:
 install:
   - npm install
 script:
-  - npm run prepush
+  - npm run lint
 deploy:
   on: feat/add-ci-deploy
   provider: script
