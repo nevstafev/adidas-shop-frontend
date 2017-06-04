@@ -58,7 +58,7 @@ const Save = styled.button`
   border-radius: 50%;
   background-color: ${props => props.color};
   position: absolute;
-  top: 168px;
+  top: 200px;
   left: 28px;
   cursor: pointer;
   text-transform: uppercase;
@@ -133,8 +133,8 @@ const Price = styled.h2`
 const colors = ['#c5c5c5', '#4d87ca', '#4a4a4a', '#e0e0e0'];
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       color: 0,
     };
@@ -151,7 +151,7 @@ class Header extends Component {
     return (
       <Wrapper>
         <LeftHeader>
-          <Name>Ultra Boost</Name>
+          <Name>{this.props.title}</Name>
           <Save color={selectedColor}>Save</Save>
         </LeftHeader>
         <RightHeader>
@@ -165,7 +165,7 @@ class Header extends Component {
             ))}
             <Sale>Sale</Sale>
           </Top>
-          <Price color={selectedColor}>$170</Price>
+          <Price color={selectedColor}>${this.props.price}</Price>
         </RightHeader>
       </Wrapper>
     );
