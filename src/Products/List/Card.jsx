@@ -52,9 +52,9 @@ const Sale = styled(Label)`
 
 export default props => (
   <Wrapper>
-    <Image src={require('./dark.png')} />
+    <Image src={props.image} />
     <StyledLink isSale={props.isSale} to={props.to}>
-      $170
+      {props.price}
     </StyledLink>
     {props.isSale && <Sale>Sale</Sale>}
   </Wrapper>

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
+import getCoverImage from './../../utils/image';
+import { get } from '../../utils/fetch-api';
 import Card from './Card';
 import Button from './Filters/Button';
 import Label from './Filters/Label';
@@ -75,46 +77,66 @@ const List = styled.div`
 
 const CardCol = props => <Col xs={12} sm={6} md={4}>{props.children}</Col>;
 
-export default () => (
-  <Wrapper>
-    <Filter>
-      <Icon />
-      <Gender>
-        <GenderButton>Man</GenderButton>
-        <GenderButton>Woman</GenderButton>
-      </Gender>
-      <Size>
-        <Label>Size</Label>
-        <SizeButton>36</SizeButton>
-        <SizeButton>37</SizeButton>
-        <SizeButton>38</SizeButton>
-        <SizeButton>39</SizeButton>
-        <SizeButton>40</SizeButton>
-        <SizeButton>41</SizeButton>
-        <SizeButton>42</SizeButton>
-      </Size>
-    </Filter>
-    <List>
-      <Row>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-      </Row>
-    </List>
-  </Wrapper>
-);
+class Products extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { list: [] };
+    this.updateList = this.updateList.bind(this);
+  }
+
+  componentDidMount() {
+    this.updateList(
+      this.props.match.params.group,
+      this.props.match.params.type,
+    );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.updateList(nextProps.match.params.group, nextProps.match.params.type);
+  }
+
+  updateList(group, type) {
+    get(`/${group}/${type}`)
+      .then(response => response.json())
+      .then(json => this.setState({ list: json.items }));
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <Filter>
+          <Icon />
+          <Gender>
+            <GenderButton>Man</GenderButton>
+            <GenderButton>Woman</GenderButton>
+          </Gender>
+          <Size>
+            <Label>Size</Label>
+            <SizeButton>36</SizeButton>
+            <SizeButton>37</SizeButton>
+            <SizeButton>38</SizeButton>
+            <SizeButton>39</SizeButton>
+            <SizeButton>40</SizeButton>
+            <SizeButton>41</SizeButton>
+            <SizeButton>42</SizeButton>
+          </Size>
+        </Filter>
+        <List>
+          <Row>
+            {this.state.list.map(item => (
+              <CardCol key={item.id}>
+                <Card
+                  price={`$${item.price / 100}`}
+                  to={item.id}
+                  image={getCoverImage(item.images)}
+                />
+              </CardCol>
+            ))}
+          </Row>
+        </List>
+      </Wrapper>
+    );
+  }
+}
+
+export default Products;
