@@ -27,9 +27,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint src --ext=js,jsx",
     "prepush": "npm run lint",
-    "deploy": "npm run build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN"
+    "deploy": "npm run build && cd build && now -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN"
   },
   "now": {
-    "alias": "nevstafev-adidas-shop.now.sh"
+    "alias": "nevstafev-adidas-shop"
   }
 }
