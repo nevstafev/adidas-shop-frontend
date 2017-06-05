@@ -8,7 +8,6 @@ import toSymbol from './../../utils/currency';
 import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
-import Label from './Filters/Label';
 import Price from './Price';
 
 const Wrapper = styled.main`
@@ -47,18 +46,18 @@ const Icon = styled.div`
   `}
 `;
 
-const Gender = styled.div`
-  display: flex;
-  padding-bottom: 10px;
-  align-items: center;
-  ${media.small`
-    padding-bottom: 0;
-  `}
-`;
-
-const GenderButton = styled(Button)`
-  padding: 0 15px 0 0;
-`;
+// const Gender = styled.div`
+//   display: flex;
+//   padding-bottom: 10px;
+//   align-items: center;
+//   ${media.small`
+//     padding-bottom: 0;
+//   `}
+// `;
+//
+// const GenderButton = styled(Button)`
+//   padding: 0 15px 0 0;
+// `;
 
 const Size = styled.div`
   display: flex;
@@ -67,6 +66,12 @@ const Size = styled.div`
 
 const SizeButton = styled(Button)`
   padding: 0px 3px;
+  ${props => props.isSelected && 'color: #4d42f8'}
+`;
+
+const Reset = styled(Button)`
+  color: #4d42f8;
+  margin-right: 15px;
 `;
 
 const List = styled.div`
@@ -82,8 +87,10 @@ const CardCol = props => <Col xs={12} sm={6} md={4}>{props.children}</Col>;
 class Products extends Component {
   constructor(props) {
     super(props);
-    this.state = { list: [] };
+    this.state = { list: [], sizes: [], filters: [] };
     this.load = this.load.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   componentDidMount() {
@@ -92,12 +99,34 @@ class Products extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.load(nextProps);
+    this.setState({ filters: [] });
   }
 
   load(props) {
-    get(`/v1/products/${props.match.params.group}/${props.match.params.type}`)
-      .then(r => r.json())
-      .then(json => this.setState({ list: json.items }));
+    const filterSizes = new Set();
+    get(`/v1/${props.match.url}`).then(r => r.json()).then((json) => {
+      json.items.forEach(item =>
+        item.sizes.forEach(size => filterSizes.add(size)),
+      );
+      this.setState({ list: json.items, sizes: [...filterSizes] });
+    });
+  }
+
+  handleSelect(index) {
+    this.setState((prevState) => {
+      const selected = this.state.sizes[index];
+      if (prevState.filters.includes(selected)) {
+        prevState.filters.splice(prevState.filters.indexOf(selected), 1);
+      } else {
+        prevState.filters.push(selected);
+      }
+
+      return { filters: prevState.filters };
+    });
+  }
+
+  handleReset() {
+    this.setState({ filters: [] });
   }
 
   render() {
@@ -105,25 +134,42 @@ class Products extends Component {
       <Wrapper>
         <Filter>
           <Icon />
-          <Gender>
-            <GenderButton>Man</GenderButton>
-            <GenderButton>Woman</GenderButton>
-          </Gender>
+          {/* <Gender>*/}
+          {/* <GenderButton>Man</GenderButton>*/}
+          {/* <GenderButton>Woman</GenderButton>*/}
+          {/* </Gender>*/}
           <Size>
-            <Label>Size</Label>
-            <SizeButton>42</SizeButton>
+            <Reset onClick={this.handleReset}>Size</Reset>
+            {this.state.sizes.map((filter, index) => (
+              <SizeButton
+                key={filter}
+                isSelected={this.state.filters.includes(
+                  this.state.sizes[index],
+                )}
+                onClick={() => this.handleSelect(index)}
+              >
+                {filter}
+              </SizeButton>
+            ))}
           </Size>
         </Filter>
         <List>
           <Row>
-            {this.state.list.map(item => (
-              <CardCol key={item.id}>
-                <Card image={getCoverImage(item.images)}>
-                  <Price
-                    to={item.id}
-                  >{`${toSymbol(item.currency)}${item.price / 100}`}</Price>
-                </Card>
-              </CardCol>
+            {this.state.list
+              .filter(
+                item =>
+                  (this.state.filters.length === 0
+                    ? true
+                    : this.state.filters.some(f => item.sizes.includes(f))),
+              )
+              .map(item => (
+                <CardCol key={item.id}>
+                  <Card image={getCoverImage(item.images)}>
+                    <Price
+                      to={item.id}
+                    >{`${toSymbol(item.currency)}${item.price / 100}`}</Price>
+                  </Card>
+                </CardCol>
               ))}
           </Row>
         </List>
