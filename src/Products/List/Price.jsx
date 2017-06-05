@@ -1,5 +1,11 @@
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
+const currencies = {
+  USD: '$',
+  EUR: '€',
+};
 
 const StyledLink = styled(Link)`
   font-family: AvenirNext;
@@ -17,4 +23,8 @@ const StyledLink = styled(Link)`
   margin-top: 6px;
 `;
 
-export default StyledLink;
+export default props => (
+  <StyledLink to={props.to}>
+    {currencies[props.currency]}{props.children / 100}
+  </StyledLink>
+);

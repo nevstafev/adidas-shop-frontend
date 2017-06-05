@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import media from './../../utils/media';
 import getCoverImage from './../../utils/image';
-import toSymbol from './../../utils/currency';
 import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
@@ -160,14 +159,13 @@ class Products extends Component {
                 item =>
                   (this.state.filters.length === 0
                     ? true
-                    : this.state.filters.some(f => item.sizes.includes(f))),
-              )
+                    : this.state.filters.some(f => item.sizes.includes(f))))
               .map(item => (
                 <CardCol key={item.id}>
                   <Card image={getCoverImage(item.images)}>
-                    <Price
-                      to={item.id}
-                    >{`${toSymbol(item.currency)}${item.price / 100}`}</Price>
+                    <Price to={item.id} currency={item.currency}>
+                      {item.price}
+                    </Price>
                   </Card>
                 </CardCol>
               ))}
