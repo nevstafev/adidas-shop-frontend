@@ -4,10 +4,12 @@ import styled from 'styled-components';
 
 import media from './../../utils/media';
 import getCoverImage from './../../utils/image';
-import { get } from '../../utils/fetch-api';
+import toSymbol from './../../utils/currency';
+import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
 import Label from './Filters/Label';
+import Price from './Price';
 
 const Wrapper = styled.main`
   background-color: #ffffff;
@@ -81,23 +83,20 @@ class Products extends Component {
   constructor(props) {
     super(props);
     this.state = { list: [] };
-    this.updateList = this.updateList.bind(this);
+    this.load = this.load.bind(this);
   }
 
   componentDidMount() {
-    this.updateList(
-      this.props.match.params.group,
-      this.props.match.params.type,
-    );
+    this.load(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.updateList(nextProps.match.params.group, nextProps.match.params.type);
+    this.load(nextProps);
   }
 
-  updateList(group, type) {
-    get(`/${group}/${type}`)
-      .then(response => response.json())
+  load(props) {
+    get(`/v1/products/${props.match.params.group}/${props.match.params.type}`)
+      .then(r => r.json())
       .then(json => this.setState({ list: json.items }));
   }
 
@@ -112,26 +111,22 @@ class Products extends Component {
           </Gender>
           <Size>
             <Label>Size</Label>
-            <SizeButton>36</SizeButton>
-            <SizeButton>37</SizeButton>
-            <SizeButton>38</SizeButton>
-            <SizeButton>39</SizeButton>
-            <SizeButton>40</SizeButton>
-            <SizeButton>41</SizeButton>
             <SizeButton>42</SizeButton>
           </Size>
         </Filter>
         <List>
           <Row>
-            {this.state.list.map(item => (
-              <CardCol key={item.id}>
-                <Card
-                  price={`$${item.price / 100}`}
-                  to={item.id}
-                  image={getCoverImage(item.images)}
-                />
-              </CardCol>
-            ))}
+            {this.state.list.map((item) => {
+              return (
+                <CardCol key={item.id}>
+                  <Card image={getCoverImage(item.images)}>
+                    <Price
+                      to={item.id}
+                    >{`${toSymbol(item.currency)}${item.price / 100}`}</Price>
+                  </Card>
+                </CardCol>
+              );
+            })}
           </Row>
         </List>
       </Wrapper>
