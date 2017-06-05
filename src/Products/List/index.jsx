@@ -116,17 +116,15 @@ class Products extends Component {
         </Filter>
         <List>
           <Row>
-            {this.state.list.map((item) => {
-              return (
-                <CardCol key={item.id}>
-                  <Card image={getCoverImage(item.images)}>
-                    <Price
-                      to={item.id}
-                    >{`${toSymbol(item.currency)}${item.price / 100}`}</Price>
-                  </Card>
-                </CardCol>
-              );
-            })}
+            {this.state.list.map(item => (
+              <CardCol key={item.id}>
+                <Card image={getCoverImage(item.images)}>
+                  <Price
+                    to={item.id}
+                  >{`${toSymbol(item.currency)}${item.price / 100}`}</Price>
+                </Card>
+              </CardCol>
+              ))}
           </Row>
         </List>
       </Wrapper>
