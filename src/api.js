@@ -2,7 +2,7 @@ const basicUrl = 'https://erodionov-adidas-fake-api.now.sh';
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response;
+    return response.json();
   }
 
   const { status, body } = response;

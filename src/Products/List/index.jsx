@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
@@ -7,7 +8,7 @@ import getCoverImage from './../../utils/image';
 import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
-import Price from './Price';
+import Price from './../../components/Price';
 
 const Wrapper = styled.main`
   background-color: #ffffff;
@@ -73,6 +74,22 @@ const Reset = styled(Button)`
   margin-right: 15px;
 `;
 
+const StyledLink = styled(Link)`
+  font-family: AvenirNext;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.366;
+  text-decoration: none;
+  color: ${props => (props.isSale ? '#ffffff' : '#0d0d0d')};
+  background-color: #ffffff;
+  ${props => props.isSale && 'background-image: linear-gradient(107deg, #0c09bf, #966dd8)'};
+  text-align: center;
+  flex: 1 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 6px;
+`;
+
 const List = styled.div`
   flex-basis: 100%;
   padding: 15px 15px 0 15px;
@@ -103,7 +120,7 @@ class Products extends Component {
 
   load(props) {
     const filterSizes = new Set();
-    get(`/v1/${props.match.url}`).then(r => r.json()).then((json) => {
+    get(`/v1/${props.match.url}`).then((json) => {
       json.items.forEach(item =>
         item.sizes.forEach(size => filterSizes.add(size)),
       );
@@ -139,15 +156,13 @@ class Products extends Component {
           {/* </Gender>*/}
           <Size>
             <Reset onClick={this.handleReset}>Size</Reset>
-            {this.state.sizes.map((filter, index) => (
+            {this.state.sizes.map((size, index) => (
               <SizeButton
-                key={filter}
-                isSelected={this.state.filters.includes(
-                  this.state.sizes[index],
-                )}
+                key={size}
+                isSelected={this.state.filters.includes(this.state.sizes[index])}
                 onClick={() => this.handleSelect(index)}
               >
-                {filter}
+                {size}
               </SizeButton>
             ))}
           </Size>
@@ -155,17 +170,15 @@ class Products extends Component {
         <List>
           <Row>
             {this.state.list
-              .filter(
-                item =>
-                  (this.state.filters.length === 0
-                    ? true
-                    : this.state.filters.some(f => item.sizes.includes(f))))
+              .filter(item =>
+                item.sizes.some(s =>
+                    !this.state.filters.length || this.state.filters.includes(s)))
               .map(item => (
                 <CardCol key={item.id}>
                   <Card image={getCoverImage(item.images)}>
-                    <Price to={item.id} currency={item.currency}>
-                      {item.price}
-                    </Price>
+                    <StyledLink to={item.id}>
+                      <Price currency={item.currency}>{item.price}</Price>
+                    </StyledLink>
                   </Card>
                 </CardCol>
               ))}
