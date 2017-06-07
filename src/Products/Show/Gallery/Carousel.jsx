@@ -13,6 +13,10 @@ const Wrapper = styled.div`
   flex: 0 0 100%;
 `;
 
+const ThumbImage = styled(Image)`
+  max-height: 100px;
+`;
+
 class Carousel extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +41,7 @@ class Carousel extends Component {
               isSelected={index === this.state.selected}
               onClick={() => this.handleSelect(index)}
             >
-              <Image src={img} />
+              <ThumbImage src={img} />
             </Button>
           ))}
         </Thumbnails>

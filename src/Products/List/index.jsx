@@ -4,7 +4,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
-import getCoverImage from './../../utils/image';
+import { getCoverImageUrl } from './../../utils/images';
 import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
@@ -175,7 +175,7 @@ class Products extends Component {
                     !this.state.filters.length || this.state.filters.includes(s)))
               .map(item => (
                 <CardCol key={item.id}>
-                  <Card image={getCoverImage(item.images)}>
+                  <Card image={getCoverImageUrl(item.images)}>
                     <StyledLink to={item.id}>
                       <Price currency={item.currency}>{item.price}</Price>
                     </StyledLink>

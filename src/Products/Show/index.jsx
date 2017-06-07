@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import media from './../../utils/media';
 import { getImageUrl } from './../../utils/images';
-import { get } from './../../utils/fetch-api';
+import { get } from './../../api';
 import Header from './Header';
 import Description from './Description';
 import Carousel from './Gallery/Carousel';
@@ -63,9 +63,7 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    const params = this.props.match.params;
-    get(`/${params.group}/${params.type}/${params.id}`)
-      .then(response => response.json())
+    get(`/v1/${this.props.match.url}`)
       .then(json => this.setState({ item: json }));
   }
 
