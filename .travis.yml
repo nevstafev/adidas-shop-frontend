@@ -1,7 +1,15 @@
 language: node_js
 node_js:
   - "node"
+before_install:
+  - npm install -g now
 install:
   - npm install
 script:
   - npm run lint
+deploy:
+  on: master
+  provider: script
+  skip_cleanup: true
+  script:
+    - npm run deploy
