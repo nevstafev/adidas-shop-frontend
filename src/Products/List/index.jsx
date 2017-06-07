@@ -125,7 +125,7 @@ class Products extends Component {
       json.items.forEach(item =>
         item.sizes.forEach(size => filterSizes.add(size)),
       );
-      this.setState({ list: json.items, sizes: [...filterSizes] });
+      this.setState({ list: json.items, sizes: [...filterSizes].sort((a, b) => a.localeCompare(b, 'en', { numeric: true })) });
     });
   }
 
