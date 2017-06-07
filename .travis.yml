@@ -8,7 +8,7 @@ install:
 script:
   - npm run lint
 deploy:
-  on: master
+  on: rc
   provider: script
   skip_cleanup: true
   script:
