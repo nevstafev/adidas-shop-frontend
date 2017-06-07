@@ -63,15 +63,20 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    get(`/v1/${this.props.match.url}`)
-      .then(json => this.setState({ item: json }));
+    get(`/v1/${this.props.match.url}`).then(json =>
+      this.setState({ item: json }));
   }
 
   render() {
-    return this.state.item && (
+    return (
+      this.state.item &&
       <Wrapper>
         <Product>
-          <Header title={this.state.item.title} price={this.state.item.price / 100} />
+          <Header
+            title={this.state.item.title}
+            currency={this.state.item.currency}
+            price={this.state.item.price}
+          />
           <Carousel images={this.state.item.images.map(getImageUrl)} />
           <Description text={this.state.item.description} />
         </Product>
