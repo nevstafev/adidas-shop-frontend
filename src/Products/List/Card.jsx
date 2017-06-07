@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import media from '../../utils/media';
-import Label from '../../components/Label';
+// import Label from '../../components/Label';
 
 const Image = styled.img`
   width: 100%;
@@ -21,41 +20,22 @@ const Wrapper = styled.div`
   `}
 `;
 
-const StyledLink = styled(Link)`
-
-  font-family: AvenirNext;
-  font-size: 30px;
-  font-weight: bold;
-  line-height: 1.366;
-  text-decoration: none;
-  color: ${props => (props.isSale ? '#ffffff' : '#0d0d0d')};
-  background-color: #ffffff;
-  ${props => props.isSale && 'background-image: linear-gradient(107deg, #0c09bf, #966dd8)'};
-  text-align: center;
-  flex: 1 100%;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  margin-top: 6px;
-`;
-
-const Sale = styled(Label)`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px 25px;
-  ${media.small`
-    top: 20px;
-    right: 20px;
-    padding: 5px 20px;
-  `}
-`;
+// const Sale = styled(Label)`
+//   position: absolute;
+//   top: 20px;
+//   right: 20px;
+//   padding: 10px 25px;
+//   ${media.small`
+//     top: 20px;
+//     right: 20px;
+//     padding: 5px 20px;
+//   `}
+// `;
 
 export default props => (
   <Wrapper>
-    <Image src={require('./dark.png')} />
-    <StyledLink isSale={props.isSale} to={props.to}>
-      $170
-    </StyledLink>
-    {props.isSale && <Sale>Sale</Sale>}
+    <Image src={props.image} />
+    {props.children}
+    {/* {props.isSale && <Sale>Sale</Sale>}*/}
   </Wrapper>
 );
