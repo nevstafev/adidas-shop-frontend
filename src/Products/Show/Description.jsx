@@ -24,18 +24,6 @@ const Wrapper = styled.p`
   `}
 `;
 
-const Strong = styled.span`
-  color: #6e6e6e;
-`;
-
-export default () => (
-  <Wrapper>
-    <Strong>Adidas</Strong>
-    {' '}
-    is a German multinational
-    corporation,
-    headquartered in
-    Herzogenaurach, Germany, that designs and
-    manufactures shoes, clothing and accessories.
-  </Wrapper>
+export default props => (
+  <Wrapper>{props.text}</Wrapper>
 );
