@@ -130,14 +130,16 @@ class Products extends Component {
 
   handleSelect(index) {
     this.setState((prevState) => {
-      const selected = this.state.sizes[index];
-      if (prevState.filters.includes(selected)) {
-        prevState.filters.splice(prevState.filters.indexOf(selected), 1);
-      } else {
-        prevState.filters.push(selected);
+      const filterIndex = prevState.filters.indexOf(index);
+      if (filterIndex > -1) {
+        return {
+          filters: [
+            ...prevState.filters.slice(0, filterIndex),
+            ...prevState.filters.slice(filterIndex + 1),
+          ],
+        };
       }
-
-      return { filters: prevState.filters };
+      return { filters: [...prevState.filters, index] };
     });
   }
 
@@ -159,7 +161,7 @@ class Products extends Component {
             {this.state.sizes.map((size, index) => (
               <SizeButton
                 key={size}
-                isSelected={this.state.filters.includes(this.state.sizes[index])}
+                isSelected={this.state.filters.includes(index)}
                 onClick={() => this.handleSelect(index)}
               >
                 {size}
@@ -171,8 +173,10 @@ class Products extends Component {
           <Row>
             {this.state.list
               .filter(item =>
-                item.sizes.some(s =>
-                    !this.state.filters.length || this.state.filters.includes(s)))
+                item.sizes.some(size =>
+                    !this.state.filters.length ||
+                    this.state.filters.some(
+                      filterIndex => this.state.sizes[filterIndex] === size)))
               .map(item => (
                 <CardCol key={item.id}>
                   <Card image={getCoverImage(item.images)}>
