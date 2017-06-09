@@ -1,8 +1,11 @@
 import React from 'react';
 
-const currencies = {
-  USD: '$',
-  EUR: '€',
+export default (props) => {
+  const price = props.children / 100;
+  const currencies = {
+    RUB: `${price}₽`,
+    USD: `$${price}`,
+    EUR: `€${price}`,
+  };
+  return (<span>{currencies[props.currency]}</span>);
 };
-
-export default props => <span>{currencies[props.currency]}{props.children / 100}</span>;

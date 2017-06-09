@@ -2,7 +2,7 @@ const basicUrl = 'https://erodionov-adidas-fake-api.now.sh';
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response.json();
+    return response;
   }
 
   const { status, body } = response;
@@ -25,7 +25,7 @@ const request = (method, resource, headers, body = null) =>
   }).then(checkStatus);
 
 export function get(resource, headers) {
-  return request('GET', resource, headers);
+  return request('GET', resource, headers).then(r => r.json());
 }
 
 export function post(resource, body, headers) {

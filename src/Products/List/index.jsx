@@ -103,7 +103,7 @@ const CardCol = props => <Col xs={12} sm={6} md={4}>{props.children}</Col>;
 class Products extends Component {
   constructor(props) {
     super(props);
-    this.state = { list: [], sizes: [], filters: [] };
+    this.state = { products: [], sizes: [], filters: [] };
     this.load = this.load.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleReset = this.handleReset.bind(this);
@@ -124,7 +124,7 @@ class Products extends Component {
       json.items.forEach(item =>
         item.sizes.forEach(size => filterSizes.add(size)),
       );
-      this.setState({ list: json.items, sizes: [...filterSizes] });
+      this.setState({ products: json.items, sizes: [...filterSizes] });
     });
   }
 
@@ -171,17 +171,17 @@ class Products extends Component {
         </Filter>
         <List>
           <Row>
-            {this.state.list
-              .filter(item =>
-                item.sizes.some(size =>
+            {this.state.products
+              .filter(product =>
+                product.sizes.some(size =>
                     !this.state.filters.length ||
                     this.state.filters.some(
                       filterIndex => this.state.sizes[filterIndex] === size)))
-              .map(item => (
-                <CardCol key={item.id}>
-                  <Card image={getCoverImage(item.images)}>
-                    <StyledLink to={item.id}>
-                      <Price currency={item.currency}>{item.price}</Price>
+              .map(product => (
+                <CardCol key={product.id}>
+                  <Card image={getCoverImage(product.images)}>
+                    <StyledLink to={product.id}>
+                      <Price currency={product.currency}>{product.price}</Price>
                     </StyledLink>
                   </Card>
                 </CardCol>
