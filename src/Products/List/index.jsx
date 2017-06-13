@@ -4,7 +4,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
-import getCoverImage from './../../utils/image';
+import { getCoverImageUrl } from './../../utils/image';
 import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
@@ -61,6 +61,7 @@ const Icon = styled.div`
 
 const Size = styled.div`
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
 `;
 
@@ -179,7 +180,7 @@ class Products extends Component {
                       filterIndex => this.state.sizes[filterIndex] === size)))
               .map(product => (
                 <CardCol key={product.id}>
-                  <Card image={getCoverImage(product.images)}>
+                  <Card image={getCoverImageUrl(product.images)}>
                     <StyledLink to={product.id}>
                       <Price currency={product.currency}>{product.price}</Price>
                     </StyledLink>

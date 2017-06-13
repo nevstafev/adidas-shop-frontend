@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
-import { getImageUrl } from './../../utils/images';
-import { get } from './../../utils/fetch-api';
+import { getImageUrl } from '../../utils/image';
+import { get } from './../../api';
 import Header from './Header';
 import Description from './Description';
 import Carousel from './Gallery/Carousel';
@@ -63,17 +63,20 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    const params = this.props.match.params;
-    get(`/${params.group}/${params.type}/${params.id}`)
-      .then(response => response.json())
-      .then(json => this.setState({ item: json }));
+    get(`/v1/${this.props.match.url}`).then(json =>
+      this.setState({ item: json }));
   }
 
   render() {
-    return this.state.item && (
+    return (
+      this.state.item &&
       <Wrapper>
         <Product>
-          <Header title={this.state.item.title} price={this.state.item.price / 100} />
+          <Header
+            title={this.state.item.title}
+            currency={this.state.item.currency}
+            price={this.state.item.price}
+          />
           <Carousel images={this.state.item.images.map(getImageUrl)} />
           <Description text={this.state.item.description} />
         </Product>

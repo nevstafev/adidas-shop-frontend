@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import media from './../../utils/media';
 // import Label from '../../components/Label';
+import Price from '../../components/Price';
 
 const Wrapper = styled.header`
   flex: 0 0 100%;
@@ -24,7 +25,7 @@ const LeftHeader = styled.div`
   position: relative;
   padding-left: 15px;
   ${media.small`
-    max-width: 230px;
+    max-width: 300px;
     display: flex;
     flex-flow: column wrap;
     padding-left: 28px;
@@ -116,7 +117,7 @@ const RightHeader = styled.div`
 //   `}
 // `;
 
-const Price = styled.h2`
+const PriceWrapper = styled.h2`
   padding-bottom: 15px;
   padding-top: 10px;
   margin: 0px;
@@ -124,10 +125,10 @@ const Price = styled.h2`
   font-size: 80px;
   font-weight: bold;
   line-height: 1;
-  color: ${props => props.color};
+  color: #393939;
 `;
 
-const colors = ['#c5c5c5', '#4d87ca', '#4a4a4a', '#e0e0e0'];
+// const colors = ['#c5c5c5', '#4d87ca', '#4a4a4a', '#e0e0e0'];
 
 class Header extends Component {
   constructor(props) {
@@ -143,7 +144,7 @@ class Header extends Component {
   }
 
   render() {
-    const selectedColor = colors[this.state.color];
+    // const selectedColor = colors[this.state.color];
 
     return (
       <Wrapper>
@@ -162,7 +163,9 @@ class Header extends Component {
           {/* ))}*/}
           {/* <Sale>Sale</Sale>*/}
           {/* </Top>*/}
-          <Price color={selectedColor}>${this.props.price}</Price>
+          <PriceWrapper>
+            <Price currency={this.props.currency}>{this.props.price}</Price>
+          </PriceWrapper>
         </RightHeader>
       </Wrapper>
     );
