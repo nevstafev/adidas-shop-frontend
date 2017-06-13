@@ -28,7 +28,7 @@ export default () => (
       <Switch>
         <Route exact path="/products/:group/:type/" component={ProductList} />
         <Route exact path="/products/:group/:type/:id" component={ProductDetails} />
-        <Redirect from="/" to="/products/running/shoes/" />
+        <Redirect from="/" to="/products/football/cleats/" />
       </Switch>
     </Wrapper>
   </Router>

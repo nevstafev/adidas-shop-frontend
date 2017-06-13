@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
+import getCoverImage from './../../utils/image';
+import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
-import Label from './Filters/Label';
+import Price from './../../components/Price';
 
 const Wrapper = styled.main`
   background-color: #ffffff;
@@ -43,18 +46,18 @@ const Icon = styled.div`
   `}
 `;
 
-const Gender = styled.div`
-  display: flex;
-  padding-bottom: 10px;
-  align-items: center;
-  ${media.small`
-    padding-bottom: 0;
-  `}
-`;
-
-const GenderButton = styled(Button)`
-  padding: 0 15px 0 0;
-`;
+// const Gender = styled.div`
+//   display: flex;
+//   padding-bottom: 10px;
+//   align-items: center;
+//   ${media.small`
+//     padding-bottom: 0;
+//   `}
+// `;
+//
+// const GenderButton = styled(Button)`
+//   padding: 0 15px 0 0;
+// `;
 
 const Size = styled.div`
   display: flex;
@@ -63,6 +66,28 @@ const Size = styled.div`
 
 const SizeButton = styled(Button)`
   padding: 0px 3px;
+  ${props => props.isSelected && 'color: #4d42f8'}
+`;
+
+const Reset = styled(Button)`
+  color: #4d42f8;
+  margin-right: 15px;
+`;
+
+const StyledLink = styled(Link)`
+  font-family: AvenirNext;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.366;
+  text-decoration: none;
+  color: ${props => (props.isSale ? '#ffffff' : '#0d0d0d')};
+  background-color: #ffffff;
+  ${props => props.isSale && 'background-image: linear-gradient(107deg, #0c09bf, #966dd8)'};
+  text-align: center;
+  flex: 1 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-top: 6px;
 `;
 
 const List = styled.div`
@@ -75,46 +100,97 @@ const List = styled.div`
 
 const CardCol = props => <Col xs={12} sm={6} md={4}>{props.children}</Col>;
 
-export default () => (
-  <Wrapper>
-    <Filter>
-      <Icon />
-      <Gender>
-        <GenderButton>Man</GenderButton>
-        <GenderButton>Woman</GenderButton>
-      </Gender>
-      <Size>
-        <Label>Size</Label>
-        <SizeButton>36</SizeButton>
-        <SizeButton>37</SizeButton>
-        <SizeButton>38</SizeButton>
-        <SizeButton>39</SizeButton>
-        <SizeButton>40</SizeButton>
-        <SizeButton>41</SizeButton>
-        <SizeButton>42</SizeButton>
-      </Size>
-    </Filter>
-    <List>
-      <Row>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-        <CardCol>
-          <Card isSale to="id" />
-        </CardCol>
-      </Row>
-    </List>
-  </Wrapper>
-);
+class Products extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { products: [], sizes: [], filters: [] };
+    this.load = this.load.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+
+  componentDidMount() {
+    this.load(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.load(nextProps);
+    this.setState({ filters: [] });
+  }
+
+  load(props) {
+    const filterSizes = new Set();
+    get(`/v1/${props.match.url}`).then((json) => {
+      json.items.forEach(item =>
+        item.sizes.forEach(size => filterSizes.add(size)),
+      );
+      this.setState({ products: json.items, sizes: [...filterSizes] });
+    });
+  }
+
+  handleSelect(index) {
+    this.setState((prevState) => {
+      const filterIndex = prevState.filters.indexOf(index);
+      if (filterIndex > -1) {
+        return {
+          filters: [
+            ...prevState.filters.slice(0, filterIndex),
+            ...prevState.filters.slice(filterIndex + 1),
+          ],
+        };
+      }
+      return { filters: [...prevState.filters, index] };
+    });
+  }
+
+  handleReset() {
+    this.setState({ filters: [] });
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <Filter>
+          <Icon />
+          {/* <Gender>*/}
+          {/* <GenderButton>Man</GenderButton>*/}
+          {/* <GenderButton>Woman</GenderButton>*/}
+          {/* </Gender>*/}
+          <Size>
+            <Reset onClick={this.handleReset}>Size</Reset>
+            {this.state.sizes.map((size, index) => (
+              <SizeButton
+                key={size}
+                isSelected={this.state.filters.includes(index)}
+                onClick={() => this.handleSelect(index)}
+              >
+                {size}
+              </SizeButton>
+            ))}
+          </Size>
+        </Filter>
+        <List>
+          <Row>
+            {this.state.products
+              .filter(product =>
+                product.sizes.some(size =>
+                    !this.state.filters.length ||
+                    this.state.filters.some(
+                      filterIndex => this.state.sizes[filterIndex] === size)))
+              .map(product => (
+                <CardCol key={product.id}>
+                  <Card image={getCoverImage(product.images)}>
+                    <StyledLink to={product.id}>
+                      <Price currency={product.currency}>{product.price}</Price>
+                    </StyledLink>
+                  </Card>
+                </CardCol>
+              ))}
+          </Row>
+        </List>
+      </Wrapper>
+    );
+  }
+}
+
+export default Products;
