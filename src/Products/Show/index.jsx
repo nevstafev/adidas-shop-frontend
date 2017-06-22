@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import media from './../../utils/media';
+import { getImageUrl } from '../../utils/image';
+import { get } from './../../api';
 import Header from './Header';
 import Description from './Description';
 import Carousel from './Gallery/Carousel';
@@ -54,24 +56,38 @@ const Button = styled.button`
   `}
 `;
 
-const images = [
-  require('./dark-big.png'),
-  require('./dark-pair-back.jpg'),
-  require('./dark-pair.jpg'),
-  require('./dark-pair-left-side.png'),
-];
+class Show extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { item: null };
+  }
 
-export default () => (
-  <Wrapper>
-    <Product>
-      <Header />
-      <Carousel images={images} />
-      <Description />
-    </Product>
-    <ButtonWrapper>
-      <Button>
-        Buy now
-      </Button>
-    </ButtonWrapper>
-  </Wrapper>
-);
+  componentDidMount() {
+    get(`/v1/${this.props.match.url}`).then(json =>
+      this.setState({ item: json }));
+  }
+
+  render() {
+    return (
+      this.state.item &&
+      <Wrapper>
+        <Product>
+          <Header
+            title={this.state.item.title}
+            currency={this.state.item.currency}
+            price={this.state.item.price}
+          />
+          <Carousel images={this.state.item.images.map(getImageUrl)} />
+          <Description text={this.state.item.description} />
+        </Product>
+        <ButtonWrapper>
+          <Button>
+            Buy now
+          </Button>
+        </ButtonWrapper>
+      </Wrapper>
+    );
+  }
+}
+
+export default Show;
