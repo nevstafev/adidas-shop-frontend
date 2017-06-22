@@ -1,5 +1,5 @@
 {
-  "name": "adidas-shop-frontend",
+  "name": "nevstafev-adidas-shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,6 +27,11 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext=js,jsx",
-    "prepush": "npm run lint"
+    "prepush": "npm run lint",
+    "deploy": "npm run build && now build -p -t $NOW_TOKEN && now alias -t $NOW_TOKEN"
+  },
+  "now": {
+    "name": "build",
+    "alias": "nevstafev-adidas-shop"
   }
 }
