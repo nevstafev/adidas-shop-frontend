@@ -39,7 +39,7 @@ const Button = styled.button`
   font-family: AvenirNext;
   font-size: 20px;
   font-weight: normal;
-  line-height: 1.35'
+  line-height: 1.35;
   color: #ffffff;
   text-transform: uppercase;
   border: none;
