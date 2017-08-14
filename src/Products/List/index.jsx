@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import media from './../../utils/media';
 import { getCoverImageUrl } from './../../utils/image';
@@ -9,6 +10,7 @@ import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
 import Price from './../../components/Price';
+import { fetchProducts, toggleFilter, resetFilter } from '../../actions';
 
 const Wrapper = styled.main`
   background-color: #ffffff;
@@ -104,19 +106,20 @@ const CardCol = props => <Col xs={12} sm={6} md={4}>{props.children}</Col>;
 class Products extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], sizes: [], filters: [] };
-    this.load = this.load.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
 
   componentDidMount() {
-    this.load(this.props);
+    const { dispatch, category } = this.props;
+    dispatch(fetchProducts(category));
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.load(nextProps);
-    this.setState({ filters: [] });
+  componentDidUpdate(prevProps) {
+    if (this.props.category !== prevProps.category) {
+      const { dispatch, category } = this.props;
+      dispatch(fetchProducts(category));
+    }
   }
 
   load(props) {
@@ -130,22 +133,14 @@ class Products extends Component {
   }
 
   handleSelect(index) {
-    this.setState((prevState) => {
-      const filterIndex = prevState.filters.indexOf(index);
-      if (filterIndex > -1) {
-        return {
-          filters: [
-            ...prevState.filters.slice(0, filterIndex),
-            ...prevState.filters.slice(filterIndex + 1),
-          ],
-        };
-      }
-      return { filters: [...prevState.filters, index] };
-    });
+    const { dispatch, category } = this.props;
+    dispatch(toggleFilter(index, category));
   }
 
   handleReset() {
-    this.setState({ filters: [] });
+    const { dispatch, category } = this.props;
+    console.log(category);
+    dispatch(resetFilter(category));
   }
 
   render() {
@@ -159,10 +154,10 @@ class Products extends Component {
           {/* </Gender>*/}
           <Size>
             <Reset onClick={this.handleReset}>Size</Reset>
-            {this.state.sizes.map((size, index) => (
+            {this.props.sizes.map((size, index) => (
               <SizeButton
                 key={size}
-                isSelected={this.state.filters.includes(index)}
+                isSelected={this.props.filter.includes(index)}
                 onClick={() => this.handleSelect(index)}
               >
                 {size}
@@ -172,12 +167,12 @@ class Products extends Component {
         </Filter>
         <List>
           <Row>
-            {this.state.products
-              .filter(product =>
-                product.sizes.some(size =>
-                    !this.state.filters.length ||
-                    this.state.filters.some(
-                      filterIndex => this.state.sizes[filterIndex] === size)))
+            {this.props.products
+            .filter(product =>
+              product.sizes.some(size =>
+                  !this.props.filter.length ||
+                  this.props.filter.some(
+                    filterIndex => this.props.sizes[filterIndex] === size)))
               .map(product => (
                 <CardCol key={product.id}>
                   <Card image={getCoverImageUrl(product.images)}>
@@ -194,4 +189,28 @@ class Products extends Component {
   }
 }
 
-export default Products;
+
+const mapStateToProps = (state, ownProps) => {
+  const { productsByCategory } = state;
+  const {
+    isFetching,
+    products,
+    sizes,
+    filter,
+  } = productsByCategory[ownProps.match.url] || {
+    products: [],
+    isFetching: true,
+    sizes: [],
+    filter: [],
+  }
+
+  return ({
+    isFetching,
+    products,
+    category: ownProps.match.url,
+    sizes: [...sizes],
+    filter,
+  });
+}
+
+export default connect(mapStateToProps)(Products);
