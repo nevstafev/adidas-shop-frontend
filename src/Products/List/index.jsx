@@ -202,7 +202,7 @@ const mapStateToProps = (state, ownProps) => {
     isFetching: true,
     sizes: [],
     filter: [],
-  }
+  };
 
   return ({
     isFetching,
@@ -211,6 +211,6 @@ const mapStateToProps = (state, ownProps) => {
     sizes: [...sizes],
     filter,
   });
-}
+};
 
 export default connect(mapStateToProps)(Products);
