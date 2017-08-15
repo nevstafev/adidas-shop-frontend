@@ -148,10 +148,10 @@ class Products extends Component {
       <Wrapper>
         <Filter>
           <Icon />
-          {/* <Gender>*/}
-          {/* <GenderButton>Man</GenderButton>*/}
-          {/* <GenderButton>Woman</GenderButton>*/}
-          {/* </Gender>*/}
+          {/* <Gender> */}
+          {/* <GenderButton>Man</GenderButton> */}
+          {/* <GenderButton>Woman</GenderButton> */}
+          {/* </Gender> */}
           <Size>
             <Reset onClick={this.handleReset}>Size</Reset>
             {this.props.sizes.map((size, index) => (
