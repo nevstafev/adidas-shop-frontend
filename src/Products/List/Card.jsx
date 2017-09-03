@@ -36,6 +36,6 @@ export default props => (
   <Wrapper>
     <Image src={props.image} />
     {props.children}
-    {/* {props.isSale && <Sale>Sale</Sale>}*/}
+    {/* {props.isSale && <Sale>Sale</Sale>} */}
   </Wrapper>
 );

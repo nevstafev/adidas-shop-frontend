@@ -2,6 +2,16 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import logger from 'redux-logger';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './App';
+import rootReducer from './reducer';
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunkMiddleware, logger),
+);
+
+ReactDOM.render(<App store={store} />, document.getElementById('root'));

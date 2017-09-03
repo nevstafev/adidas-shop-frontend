@@ -150,19 +150,19 @@ class Header extends Component {
       <Wrapper>
         <LeftHeader>
           <Name>{this.props.title}</Name>
-          {/* <Save color={selectedColor}>Save</Save>*/}
+          {/* <Save color={selectedColor}>Save</Save> */}
         </LeftHeader>
         <RightHeader>
-          {/* <Top>*/}
-          {/* {colors.map((color, index) => (*/}
-          {/* <Color*/}
-          {/* key={color}*/}
-          {/* color={color}*/}
-          {/* onClick={() => this.handleColorChange(index)}*/}
-          {/* />*/}
-          {/* ))}*/}
-          {/* <Sale>Sale</Sale>*/}
-          {/* </Top>*/}
+          {/* <Top> */}
+          {/* {colors.map((color, index) => ( */}
+          {/* <Color */}
+          {/* key={color} */}
+          {/* color={color} */}
+          {/* onClick={() => this.handleColorChange(index)} */}
+          {/* /> */}
+          {/* ))} */}
+          {/* <Sale>Sale</Sale> */}
+          {/* </Top> */}
           <PriceWrapper>
             <Price currency={this.props.currency}>{this.props.price}</Price>
           </PriceWrapper>

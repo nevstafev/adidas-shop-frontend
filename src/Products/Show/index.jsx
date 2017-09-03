@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import media from './../../utils/media';
 import { getImageUrl } from '../../utils/image';
-import { get } from './../../api';
 import Header from './Header';
 import Description from './Description';
 import Carousel from './Gallery/Carousel';
+import { fetchItem } from '../../actions';
 
 const Wrapper = styled.main`
   display: block;
@@ -57,28 +58,30 @@ const Button = styled.button`
 `;
 
 class Show extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { item: null };
-  }
 
   componentDidMount() {
-    get(`/v1/${this.props.match.url}`).then(json =>
-      this.setState({ item: json }));
+    const { dispatch, path } = this.props;
+    dispatch(fetchItem(path));
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.path !== prevProps.path) {
+      const { dispatch, path } = this.props;
+      dispatch(fetchItem(path));
+    }
   }
 
   render() {
     return (
-      this.state.item &&
       <Wrapper>
         <Product>
           <Header
-            title={this.state.item.title}
-            currency={this.state.item.currency}
-            price={this.state.item.price}
+            title={this.props.title}
+            currency={this.props.currency}
+            price={this.props.price}
           />
-          <Carousel images={this.state.item.images.map(getImageUrl)} />
-          <Description text={this.state.item.description} />
+          <Carousel images={this.props.images.map(getImageUrl)} />
+          <Description text={this.props.description} />
         </Product>
         <ButtonWrapper>
           <Button>
@@ -90,4 +93,29 @@ class Show extends Component {
   }
 }
 
-export default Show;
+const mapStateToProps = (state, ownProps) => {
+  const { visibleItem } = state;
+  const {
+    title,
+    currency,
+    price,
+    images,
+    description,
+  } = visibleItem.item || {
+    title: '',
+    currency: '',
+    price: '',
+    images: [],
+    description: '',
+  };
+  return ({
+    title,
+    currency,
+    price,
+    images,
+    description,
+    path: ownProps.match.url,
+  });
+};
+
+export default connect(mapStateToProps)(Show);
