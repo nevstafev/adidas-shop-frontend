@@ -25,3 +25,30 @@ export const fetchProducts = category => (dispatch) => {
       .then(json => dispatch(receiveProducts(category, json)));
 };
 
+const selectItem = path => ({
+  type: 'SELECT_ITEM',
+  path,
+});
+
+const requestItem = path => ({
+  type: 'REQUEST_ITEM',
+  path,
+});
+
+const receiveItem = ({ title, currency, price, images, description }) => ({
+  type: 'RECEIVE_ITEM',
+  item: {
+    title,
+    currency,
+    price,
+    images,
+    description,
+  },
+});
+
+export const fetchItem = path => (dispatch) => {
+  dispatch(selectItem(path));
+  dispatch(requestItem(path));
+  return get(`/v1/${path}`)
+    .then(json => dispatch(receiveItem(json)));
+};

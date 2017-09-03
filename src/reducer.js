@@ -73,9 +73,31 @@ const productsByCategory = (state = {}, action) => {
   }
 };
 
+const visibleItem = (state = {}, action) => {
+  switch (action.type) {
+    case 'SELECT_ITEM':
+      return { ...state, path: action.path };
+    case 'REQUEST_ITEM':
+      return { ...state };
+    case 'RECEIVE_ITEM':
+      return {
+        ...state,
+        item: {
+          title: action.item.title,
+          currency: action.item.currency,
+          price: action.item.price,
+          images: action.item.images,
+          description: action.item.description },
+      };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   productsByCategory,
   selectCategory,
+  visibleItem,
 });
 
 export default rootReducer;

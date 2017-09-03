@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 import media from './../../utils/media';
 import { getCoverImageUrl } from './../../utils/image';
-import { get } from '../../api';
 import Card from './Card';
 import Button from './Filters/Button';
 import Price from './../../components/Price';
@@ -122,16 +121,6 @@ class Products extends Component {
     }
   }
 
-  load(props) {
-    const filterSizes = new Set();
-    get(`/v1/${props.match.url}`).then((json) => {
-      json.items.forEach(item =>
-        item.sizes.forEach(size => filterSizes.add(size)),
-      );
-      this.setState({ products: json.items, sizes: [...filterSizes] });
-    });
-  }
-
   handleSelect(index) {
     const { dispatch, category } = this.props;
     dispatch(toggleFilter(index, category));
@@ -139,7 +128,6 @@ class Products extends Component {
 
   handleReset() {
     const { dispatch, category } = this.props;
-    console.log(category);
     dispatch(resetFilter(category));
   }
 
