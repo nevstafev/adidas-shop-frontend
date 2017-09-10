@@ -69,20 +69,22 @@ class Show extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <Product>
-          <Header
-            title={this.props.title}
-            currency={this.props.currency}
-            price={this.props.price}
-          />
-          <Carousel images={this.props.images.map(getImageUrl)} />
-          <Description text={this.props.description} />
-        </Product>
-        <ButtonWrapper>
-          <Button>Buy now</Button>
-        </ButtonWrapper>
-      </Wrapper>
+      this.props.isFetching !== true && (
+        <Wrapper>
+          <Product>
+            <Header
+              title={this.props.title}
+              currency={this.props.currency}
+              price={this.props.price}
+            />
+            <Carousel images={this.props.images.map(getImageUrl)} />
+            <Description text={this.props.description} />
+          </Product>
+          <ButtonWrapper>
+            <Button>Buy now</Button>
+          </ButtonWrapper>
+        </Wrapper>
+      )
     );
   }
 }
@@ -103,6 +105,7 @@ const mapStateToProps = (state, ownProps) => {
     images,
     description,
     path: ownProps.match.url,
+    isFetching: visibleItem.isFetching,
   };
 };
 
