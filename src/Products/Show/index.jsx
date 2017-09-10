@@ -9,16 +9,14 @@ import Description from './Description';
 import Carousel from './Gallery/Carousel';
 import { fetchItem } from '../../actions';
 
-const Wrapper = styled.main`
-  display: block;
-`;
+const Wrapper = styled.main`display: block;`;
 
 const Product = styled.div`
-  font-family: "AvenirNext";
+  font-family: 'AvenirNext';
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  flex: 1 100%; 
+  flex: 1 100%;
 `;
 
 const ButtonWrapper = styled.div`
@@ -28,10 +26,9 @@ const ButtonWrapper = styled.div`
   right: 0px;
   z-index: 1;
   ${media.small`
-    left: 327px;`}
-  ${media.medium`
+    left: 327px;`} ${media.medium`
     left: 414px;
-  `}
+  `};
 `;
 
 const Button = styled.button`
@@ -54,20 +51,19 @@ const Button = styled.button`
     padding-bottom: 35px;
     cursor: pointer;
     text-transform: uppercase;
-  `}
+  `};
 `;
 
 class Show extends Component {
-
   componentDidMount() {
-    const { dispatch, path } = this.props;
-    dispatch(fetchItem(path));
+    const { loadItemInfo, path } = this.props;
+    loadItemInfo(path);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.path !== prevProps.path) {
-      const { dispatch, path } = this.props;
-      dispatch(fetchItem(path));
+      const { loadItemInfo, path } = this.props;
+      loadItemInfo(path);
     }
   }
 
@@ -84,9 +80,7 @@ class Show extends Component {
           <Description text={this.props.description} />
         </Product>
         <ButtonWrapper>
-          <Button>
-            Buy now
-          </Button>
+          <Button>Buy now</Button>
         </ButtonWrapper>
       </Wrapper>
     );
@@ -95,27 +89,25 @@ class Show extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { visibleItem } = state;
-  const {
-    title,
-    currency,
-    price,
-    images,
-    description,
-  } = visibleItem.item || {
+  const { title, currency, price, images, description } = visibleItem.item || {
     title: '',
     currency: '',
     price: '',
     images: [],
     description: '',
   };
-  return ({
+  return {
     title,
     currency,
     price,
     images,
     description,
     path: ownProps.match.url,
-  });
+  };
 };
 
-export default connect(mapStateToProps)(Show);
+const mapDispatchToProps = dispatch => ({
+  loadItemInfo: path => dispatch(fetchItem(path)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Show);
