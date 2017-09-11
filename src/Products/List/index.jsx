@@ -32,7 +32,7 @@ const Filter = styled.nav`
     padding: 10px 0;
     align-self: flex-start;
     flex: 1 0 100%;
-  `}
+  `};
 `;
 
 const Icon = styled.div`
@@ -44,21 +44,8 @@ const Icon = styled.div`
   background: url(${require('./filter.png')}) no-repeat center #ebebeb;
   ${media.small`
     display: block;
-  `}
+  `};
 `;
-
-// const Gender = styled.div`
-//   display: flex;
-//   padding-bottom: 10px;
-//   align-items: center;
-//   ${media.small`
-//     padding-bottom: 0;
-//   `}
-// `;
-//
-// const GenderButton = styled(Button)`
-//   padding: 0 15px 0 0;
-// `;
 
 const Size = styled.div`
   display: flex;
@@ -68,7 +55,7 @@ const Size = styled.div`
 
 const SizeButton = styled(Button)`
   padding: 0px 3px;
-  ${props => props.isSelected && 'color: #4d42f8'}
+  ${props => props.isSelected && 'color: #4d42f8'};
 `;
 
 const Reset = styled(Button)`
@@ -97,38 +84,26 @@ const List = styled.div`
   padding: 15px 15px 0 15px;
   ${media.small`
     padding: 16px 25px 10px 25px;
-  `}
+  `};
 `;
 
-const CardCol = props => <Col xs={12} sm={6} md={4}>{props.children}</Col>;
+const CardCol = props => (
+  <Col xs={12} sm={6} md={4}>
+    {props.children}
+  </Col>
+);
 
 class Products extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.handleReset = this.handleReset.bind(this);
-  }
-
   componentDidMount() {
-    const { dispatch, category } = this.props;
-    dispatch(fetchProducts(category));
+    const { loadProducts, category } = this.props;
+    loadProducts(category);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.category !== prevProps.category) {
-      const { dispatch, category } = this.props;
-      dispatch(fetchProducts(category));
+      const { loadProducts, category } = this.props;
+      loadProducts(category);
     }
-  }
-
-  handleSelect(index) {
-    const { dispatch, category } = this.props;
-    dispatch(toggleFilter(index, category));
-  }
-
-  handleReset() {
-    const { dispatch, category } = this.props;
-    dispatch(resetFilter(category));
   }
 
   render() {
@@ -136,17 +111,13 @@ class Products extends Component {
       <Wrapper>
         <Filter>
           <Icon />
-          {/* <Gender> */}
-          {/* <GenderButton>Man</GenderButton> */}
-          {/* <GenderButton>Woman</GenderButton> */}
-          {/* </Gender> */}
           <Size>
-            <Reset onClick={this.handleReset}>Size</Reset>
+            <Reset onClick={this.props.handleReset}>Size</Reset>
             {this.props.sizes.map((size, index) => (
               <SizeButton
                 key={size}
                 isSelected={this.props.filter.includes(index)}
-                onClick={() => this.handleSelect(index)}
+                onClick={() => this.props.handleSelect(index)}
               >
                 {size}
               </SizeButton>
@@ -156,11 +127,13 @@ class Products extends Component {
         <List>
           <Row>
             {this.props.products
-            .filter(product =>
-              product.sizes.some(size =>
-                  !this.props.filter.length ||
-                  this.props.filter.some(
-                    filterIndex => this.props.sizes[filterIndex] === size)))
+              .filter(product =>
+                product.sizes.some(
+                  size =>
+                    !this.props.filter.length ||
+                    this.props.filter.some(filterIndex => this.props.sizes[filterIndex] === size),
+                ),
+              )
               .map(product => (
                 <CardCol key={product.id}>
                   <Card image={getCoverImageUrl(product.images)}>
@@ -177,28 +150,28 @@ class Products extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  handleSelect: index => dispatch(toggleFilter(index, ownProps.match.url)),
+  handleReset: () => dispatch(resetFilter(ownProps.match.url)),
+  loadProducts: category => dispatch(fetchProducts(category)),
+});
 
 const mapStateToProps = (state, ownProps) => {
   const { productsByCategory } = state;
-  const {
-    isFetching,
-    products,
-    sizes,
-    filter,
-  } = productsByCategory[ownProps.match.url] || {
+  const { isFetching, products, sizes, filter } = productsByCategory[ownProps.match.url] || {
     products: [],
     isFetching: true,
     sizes: [],
     filter: [],
   };
 
-  return ({
+  return {
     isFetching,
     products,
     category: ownProps.match.url,
     sizes: [...sizes],
     filter,
-  });
+  };
 };
 
-export default connect(mapStateToProps)(Products);
+export default connect(mapStateToProps, mapDispatchToProps)(Products);

@@ -14,10 +14,7 @@ const filter = (state = [], action) => {
     case 'TOGGLE_FILTER': {
       const filterIndex = state.indexOf(action.filter);
       if (filterIndex > -1) {
-        return [
-          ...state.slice(0, filterIndex),
-          ...state.slice(filterIndex + 1),
-        ];
+        return [...state.slice(0, filterIndex), ...state.slice(filterIndex + 1)];
       }
       return [...state, action.filter];
     }
@@ -73,21 +70,23 @@ const productsByCategory = (state = {}, action) => {
   }
 };
 
-const visibleItem = (state = {}, action) => {
+const visibleItem = (state = { isFetching: false }, action) => {
   switch (action.type) {
     case 'SELECT_ITEM':
       return { ...state, path: action.path };
     case 'REQUEST_ITEM':
-      return { ...state };
+      return { ...state, isFetching: true };
     case 'RECEIVE_ITEM':
       return {
         ...state,
+        isFetching: false,
         item: {
           title: action.item.title,
           currency: action.item.currency,
           price: action.item.price,
           images: action.item.images,
-          description: action.item.description },
+          description: action.item.description,
+        },
       };
     default:
       return state;
