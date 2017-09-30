@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import styled from 'styled-components';
 import 'normalize.css';
-import { Provider } from 'react-redux';
 
 import media from './utils/media';
 import ProductList from './Products/List';
@@ -22,20 +21,13 @@ const Wrapper = styled.div`
   `};
 `;
 
-export default ({ store }) =>
-  (<Provider store={store}>
-    <Router>
-      <Wrapper>
-        <Sidebar />
-        <Switch>
-          <Route exact path="/products/:group/:type/" component={ProductList} />
-          <Route
-            exact
-            path="/products/:group/:type/:id"
-            component={ProductDetails}
-          />
-          <Redirect from="/" to="/products/football/cleats/" />
-        </Switch>
-      </Wrapper>
-    </Router>
-  </Provider>);
+export default () => (
+  <Wrapper>
+    <Sidebar />
+    <Switch>
+      <Route exact path="/products/:group/:type/" component={ProductList} />
+      <Route exact path="/products/:group/:type/:id" component={ProductDetails} />
+      <Redirect from="/" to="/products/football/cleats/" />
+    </Switch>
+  </Wrapper>
+);
