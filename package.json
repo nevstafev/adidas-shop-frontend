@@ -3,33 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "express": "^4.15.4",
+    "express": "^4.17.1",
     "import-export": "^1.0.1",
-    "normalize.css": "^7.0.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-flexbox-grid": "^1.1.3",
-    "react-redux": "^5.0.5",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
-    "redux": "^3.7.1",
+    "normalize.css": "^8.0.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-flexbox-grid": "^2.1.2",
+    "react-redux": "^7.1.1",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
-    "styled-components": "^2.1.0",
-    "whatwg-fetch": "^2.0.3"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.3.2",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
-    "eslint-plugin-react": "^7.0.1",
-    "husky": "^0.14.0",
-    "react-scripts": "^1.0.1"
+    "eslint": "^6.3.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "husky": "^3.0.4",
+    "react-scripts": "^3.1.1"
   },
   "scripts": {
     "start:dev": "react-scripts start",
@@ -44,5 +44,17 @@
   "now": {
     "name": "build",
     "alias": "nevstafev-adidas-shop"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
