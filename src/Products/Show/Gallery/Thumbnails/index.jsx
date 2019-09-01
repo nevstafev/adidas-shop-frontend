@@ -9,4 +9,7 @@ const Thumbnails = styled.div`
   justify-content: center;
 `;
 
-export default props => <Thumbnails>{props.children}</Thumbnails>;
+export default (props) => {
+  const { children } = props;
+  return (<Thumbnails>{children}</Thumbnails>);
+};

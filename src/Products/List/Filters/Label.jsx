@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import media from './../../../utils/media';
+import media from '../../../utils/media';
 
 export default styled.span`
   padding-right: 20px;

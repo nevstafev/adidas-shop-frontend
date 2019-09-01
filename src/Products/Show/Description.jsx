@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import media from './../../utils/media';
+import media from '../../utils/media';
 
 const Wrapper = styled.p`
   padding-left: 15px;
@@ -24,6 +24,9 @@ const Wrapper = styled.p`
   `}
 `;
 
-export default props => (
-  <Wrapper>{props.text}</Wrapper>
-);
+export default (props) => {
+  const { text } = props;
+  return (
+    <Wrapper>{text}</Wrapper>
+  );
+};

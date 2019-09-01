@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import media from './../../utils/media';
+import media from '../../utils/media';
 import { getImageUrl } from '../../utils/image';
 import Header from './Header';
 import Description from './Description';
@@ -26,7 +26,8 @@ const ButtonWrapper = styled.div`
   right: 0px;
   z-index: 1;
   ${media.small`
-    left: 327px;`} ${media.medium`
+    left: 327px;`} 
+    ${media.medium`
     left: 414px;
   `};
 `;
@@ -61,24 +62,28 @@ class Show extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.path !== prevProps.path) {
-      const { loadItemInfo, path } = this.props;
+    const { path } = this.props;
+    if (path !== prevProps.path) {
+      const { loadItemInfo } = this.props;
       loadItemInfo(path);
     }
   }
 
   render() {
+    const {
+      isFetching, title, currency, price, images, description,
+    } = this.props;
     return (
-      this.props.isFetching !== true && (
+      isFetching !== true && (
         <Wrapper>
           <Product>
             <Header
-              title={this.props.title}
-              currency={this.props.currency}
-              price={this.props.price}
+              title={title}
+              currency={currency}
+              price={price}
             />
-            <Carousel images={this.props.images.map(getImageUrl)} />
-            <Description text={this.props.description} />
+            <Carousel images={images.map(getImageUrl)} />
+            <Description text={description} />
           </Product>
           <ButtonWrapper>
             <Button>Buy now</Button>
@@ -91,7 +96,9 @@ class Show extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { visibleItem } = state;
-  const { title, currency, price, images, description } = visibleItem.item || {
+  const {
+    title, currency, price, images, description,
+  } = visibleItem.item || {
     title: '',
     currency: '',
     price: '',
@@ -109,8 +116,8 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  loadItemInfo: path => dispatch(fetchItem(path)),
+const mapDispatchToProps = (dispatch) => ({
+  loadItemInfo: (path) => dispatch(fetchItem(path)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Show);

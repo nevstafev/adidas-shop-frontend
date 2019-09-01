@@ -4,11 +4,11 @@ import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import media from './../../utils/media';
-import { getCoverImageUrl } from './../../utils/image';
+import media from '../../utils/media';
+import { getCoverImageUrl } from '../../utils/image';
 import Card from './Card';
 import Button from './Filters/Button';
-import Price from './../../components/Price';
+import Price from '../../components/Price';
 import { fetchProducts, toggleFilter, resetFilter } from '../../actions';
 
 const Wrapper = styled.main`
@@ -55,7 +55,7 @@ const Size = styled.div`
 
 const SizeButton = styled(Button)`
   padding: 0px 3px;
-  ${props => props.isSelected && 'color: #4d42f8'};
+  ${(props) => props.isSelected && 'color: #4d42f8'};
 `;
 
 const Reset = styled(Button)`
@@ -69,9 +69,9 @@ const StyledLink = styled(Link)`
   font-weight: bold;
   line-height: 1.366;
   text-decoration: none;
-  color: ${props => (props.isSale ? '#ffffff' : '#0d0d0d')};
+  color: ${(props) => (props.isSale ? '#ffffff' : '#0d0d0d')};
   background-color: #ffffff;
-  ${props => props.isSale && 'background-image: linear-gradient(107deg, #0c09bf, #966dd8)'};
+  ${(props) => props.isSale && 'background-image: linear-gradient(107deg, #0c09bf, #966dd8)'};
   text-align: center;
   flex: 1 100%;
   padding-top: 25px;
@@ -87,9 +87,9 @@ const List = styled.div`
   `};
 `;
 
-const CardCol = props => (
+const CardCol = ({ children }) => (
   <Col xs={12} sm={6} md={4}>
-    {props.children}
+    {children}
   </Col>
 );
 
@@ -100,24 +100,28 @@ class Products extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.category !== prevProps.category) {
-      const { loadProducts, category } = this.props;
+    const { category } = this.porops;
+    if (category !== prevProps.category) {
+      const { loadProducts } = this.props;
       loadProducts(category);
     }
   }
 
   render() {
+    const {
+      handleReset, sizes, filter, handleSelect, products,
+    } = this.props;
     return (
       <Wrapper>
         <Filter>
           <Icon />
           <Size>
-            <Reset onClick={this.props.handleReset}>Size</Reset>
-            {this.props.sizes.map((size, index) => (
+            <Reset onClick={handleReset}>Size</Reset>
+            {sizes.map((size, index) => (
               <SizeButton
                 key={size}
-                isSelected={this.props.filter.includes(index)}
-                onClick={() => this.props.handleSelect(index)}
+                isSelected={filter.includes(index)}
+                onClick={() => handleSelect(index)}
               >
                 {size}
               </SizeButton>
@@ -126,15 +130,12 @@ class Products extends Component {
         </Filter>
         <List>
           <Row>
-            {this.props.products
-              .filter(product =>
-                product.sizes.some(
-                  size =>
-                    !this.props.filter.length ||
-                    this.props.filter.some(filterIndex => this.props.sizes[filterIndex] === size),
-                ),
-              )
-              .map(product => (
+            {products
+              .filter((product) => product.sizes.some(
+                (size) => !filter.length
+                    || filter.some((filterIndex) => sizes[filterIndex] === size),
+              ))
+              .map((product) => (
                 <CardCol key={product.id}>
                   <Card image={getCoverImageUrl(product.images)}>
                     <StyledLink to={product.id}>
@@ -151,14 +152,16 @@ class Products extends Component {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleSelect: index => dispatch(toggleFilter(index, ownProps.match.url)),
+  handleSelect: (index) => dispatch(toggleFilter(index, ownProps.match.url)),
   handleReset: () => dispatch(resetFilter(ownProps.match.url)),
-  loadProducts: category => dispatch(fetchProducts(category)),
+  loadProducts: (category) => dispatch(fetchProducts(category)),
 });
 
 const mapStateToProps = (state, ownProps) => {
   const { productsByCategory } = state;
-  const { isFetching, products, sizes, filter } = productsByCategory[ownProps.match.url] || {
+  const {
+    isFetching, products, sizes, filter,
+  } = productsByCategory[ownProps.match.url] || {
     products: [],
     isFetching: true,
     sizes: [],

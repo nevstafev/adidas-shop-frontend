@@ -31,14 +31,16 @@ class Carousel extends Component {
   }
 
   render() {
+    const { selected } = this.state;
+    const { images } = this.props;
     return (
       <Wrapper>
-        <Cover image={this.props.images[this.state.selected]} />
+        <Cover image={images[selected]} />
         <Thumbnails>
-          {this.props.images.map((img, index) => (
+          {images.map((img, index) => (
             <Button
               key={img}
-              isSelected={index === this.state.selected}
+              isSelected={index === selected}
               onClick={() => this.handleSelect(index)}
             >
               <ThumbImage src={img} />
