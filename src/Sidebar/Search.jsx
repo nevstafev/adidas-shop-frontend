@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import media from './../utils/media';
+import media from '../utils/media';
 
 const Form = styled.form`
   display: block;

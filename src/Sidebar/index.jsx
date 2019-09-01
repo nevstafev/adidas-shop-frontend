@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import media from './../utils/media';
+import media from '../utils/media';
 import Logo from './Logo';
 import Search from './Search';
 import Navigation from './Navigation';
@@ -33,7 +33,7 @@ const Aside = styled.aside`
 const Wrapper = styled.div`
   margin: 0 20px;
   width: 100%;
-  display: ${props => (props.isVisible ? 'block' : 'none')};
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
   ${media.small`
     display: block;
   `}
@@ -47,17 +47,18 @@ class Sidebar extends Component {
   }
 
   toggle() {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isVisible: !prevState.isVisible,
     }));
   }
 
   render() {
+    const { isVisible } = this.state;
     return (
       <Aside>
         <Logo />
         <ToggleButton toggle={this.toggle} />
-        <Wrapper isVisible={this.state.isVisible}>
+        <Wrapper isVisible={isVisible}>
           <Search />
           <Navigation />
         </Wrapper>

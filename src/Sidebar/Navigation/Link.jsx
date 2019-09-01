@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import media from './../../utils/media';
+import media from '../../utils/media';
 
 export default styled(NavLink)`
   display: block;

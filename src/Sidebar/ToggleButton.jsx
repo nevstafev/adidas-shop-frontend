@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import media from './../utils/media';
+import media from '../utils/media';
 
 const ToggleButton = styled.button`
   width: 55px;
@@ -17,4 +17,7 @@ const ToggleButton = styled.button`
   `}
 `;
 
-export default props => <ToggleButton onClick={props.toggle} />;
+export default (props) => {
+  const { toggle } = props;
+  return (<ToggleButton onClick={toggle} />);
+};

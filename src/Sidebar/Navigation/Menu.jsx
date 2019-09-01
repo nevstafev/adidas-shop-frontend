@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import media from './../../utils/media';
+import media from '../../utils/media';
 
 const Button = styled.button`
   font-family: "AvenirNext";
@@ -28,7 +28,7 @@ const Button = styled.button`
     content: url(${require('./collapse.svg')});
     margin-left: 5px;
     margin-top: -3px;
-    ${props => props.isOpened && 'transform: rotate(180deg); margin-top: 3px'};
+    ${(props) => props.isOpened && 'transform: rotate(180deg); margin-top: 3px'};
   }
   ${media.small`
     margin-bottom: 30px;
@@ -53,17 +53,19 @@ class Menu extends Component {
   }
 
   toggle() {
-    this.setState(prevState => ({ isOpened: !prevState.isOpened }));
+    this.setState((prevState) => ({ isOpened: !prevState.isOpened }));
   }
 
   render() {
+    const { isOpened } = this.state;
+    const { title, children } = this.props;
     return (
       <div>
-        <Button isOpened={this.state.isOpened} onClick={this.toggle}>
-          {this.props.title}
+        <Button isOpened={isOpened} onClick={this.toggle}>
+          {title}
         </Button>
-        {this.state.isOpened &&
-          <Subcategories>{this.props.children}</Subcategories>}
+        {isOpened
+          && <Subcategories>{children}</Subcategories>}
       </div>
     );
   }

@@ -14,18 +14,17 @@ function checkStatus(response) {
   throw error;
 }
 
-const request = (method, resource, headers, body = null) =>
-  fetch(basicUrl + resource, {
-    method,
-    body,
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then(checkStatus);
+const request = (method, resource, headers, body = null) => fetch(basicUrl + resource, {
+  method,
+  body,
+  mode: 'cors',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+}).then(checkStatus);
 
 export function get(resource, headers) {
-  return request('GET', resource, headers).then(r => r.json());
+  return request('GET', resource, headers).then((r) => r.json());
 }
 
 export function post(resource, body, headers) {

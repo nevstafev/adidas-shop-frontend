@@ -32,10 +32,10 @@ const Wrapper = styled.div`
 //   `}
 // `;
 
-export default props => (
+export default ({ image, children }) => (
   <Wrapper>
-    <Image src={props.image} />
-    {props.children}
+    <Image src={image} />
+    {children}
     {/* {props.isSale && <Sale>Sale</Sale>} */}
   </Wrapper>
 );
