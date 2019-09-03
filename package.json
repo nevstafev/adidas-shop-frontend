@@ -56,5 +56,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "resolutions": {
+    "debug": "^2.6.9",
+    "sshpk": "^1.13.2",
+    "no-case": "^2.3.2"
   }
 }
