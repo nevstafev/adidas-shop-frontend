@@ -100,7 +100,7 @@ class Products extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { category } = this.porops;
+    const { category } = this.props;
     if (category !== prevProps.category) {
       const { loadProducts } = this.props;
       loadProducts(category);
