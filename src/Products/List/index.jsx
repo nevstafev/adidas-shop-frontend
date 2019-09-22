@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { isUserWhitespacable } from '@babel/types';
 import media from '../../utils/media';
 import { getCoverImageUrl } from '../../utils/image';
 import Card from './Card';
 import Button from './Filters/Button';
 import Price from '../../components/Price';
-import { fetchProducts, toggleFilter, resetFilter } from '../../actions';
+import { toggleFilter, resetFilter } from '../../actions';
 
 const Wrapper = styled.main`
   background-color: #ffffff;
@@ -98,6 +97,7 @@ const Products = (props) => {
   const category = props.match.url;
   const productsByCategory = useSelector((state) => state.productsByCategory);
   const dispatch = useDispatch();
+
   const {
     products, sizes, filter,
   } = productsByCategory[category] || {
