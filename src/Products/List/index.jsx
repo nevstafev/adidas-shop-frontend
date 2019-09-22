@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 
+import { isUserWhitespacable } from '@babel/types';
 import media from '../../utils/media';
 import { getCoverImageUrl } from '../../utils/image';
 import Card from './Card';
@@ -93,88 +94,93 @@ const CardCol = ({ children }) => (
   </Col>
 );
 
-class Products extends Component {
-  componentDidMount() {
-    const { loadProducts, category } = this.props;
-    loadProducts(category);
-  }
-
-  componentDidUpdate(prevProps) {
-    const { category } = this.porops;
-    if (category !== prevProps.category) {
-      const { loadProducts } = this.props;
-      loadProducts(category);
-    }
-  }
-
-  render() {
-    const {
-      handleReset, sizes, filter, handleSelect, products,
-    } = this.props;
-    return (
-      <Wrapper>
-        <Filter>
-          <Icon />
-          <Size>
-            <Reset onClick={handleReset}>Size</Reset>
-            {sizes.map((size, index) => (
-              <SizeButton
-                key={size}
-                isSelected={filter.includes(index)}
-                onClick={() => handleSelect(index)}
-              >
-                {size}
-              </SizeButton>
-            ))}
-          </Size>
-        </Filter>
-        <List>
-          <Row>
-            {products
-              .filter((product) => product.sizes.some(
-                (size) => !filter.length
-                    || filter.some((filterIndex) => sizes[filterIndex] === size),
-              ))
-              .map((product) => (
-                <CardCol key={product.id}>
-                  <Card image={getCoverImageUrl(product.images)}>
-                    <StyledLink to={product.id}>
-                      <Price currency={product.currency}>{product.price}</Price>
-                    </StyledLink>
-                  </Card>
-                </CardCol>
-              ))}
-          </Row>
-        </List>
-      </Wrapper>
-    );
-  }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleSelect: (index) => dispatch(toggleFilter(index, ownProps.match.url)),
-  handleReset: () => dispatch(resetFilter(ownProps.match.url)),
-  loadProducts: (category) => dispatch(fetchProducts(category)),
-});
-
-const mapStateToProps = (state, ownProps) => {
-  const { productsByCategory } = state;
+const Products = (props) => {
+  const category = props.match.url;
+  const productsByCategory = useSelector((state) => state.productsByCategory);
+  const dispatch = useDispatch();
   const {
-    isFetching, products, sizes, filter,
-  } = productsByCategory[ownProps.match.url] || {
+    products, sizes, filter,
+  } = productsByCategory[category] || {
     products: [],
     isFetching: true,
     sizes: [],
     filter: [],
   };
 
-  return {
-    isFetching,
-    products,
-    category: ownProps.match.url,
-    sizes: [...sizes],
-    filter,
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+  return (
+    <Wrapper>
+      <Filter>
+        <Icon />
+        <Size>
+          <Reset onClick={() => dispatch(resetFilter(category))}>Size</Reset>
+          {sizes.map((size, index) => (
+            <SizeButton
+              key={size}
+              isSelected={filter.includes(index)}
+              onClick={() => dispatch(toggleFilter(index, category))}
+            >
+              {size}
+            </SizeButton>
+          ))}
+        </Size>
+      </Filter>
+      <List>
+        <Row>
+          {products
+            .filter((product) => product.sizes.some(
+              (size) => !filter.length
+                || filter.some((filterIndex) => sizes[filterIndex] === size),
+            ))
+            .map((product) => (
+              <CardCol key={product.id}>
+                <Card image={getCoverImageUrl(product.images)}>
+                  <StyledLink to={product.id}>
+                    <Price currency={product.currency}>{product.price}</Price>
+                  </StyledLink>
+                </Card>
+              </CardCol>
+            ))}
+        </Row>
+      </List>
+    </Wrapper>
+  );
+};
+/* <Wrapper>
+    <Filter>
+        <Icon />
+        <Size>
+          <Reset onClick={() => dispatch(resetFilter(category))}>Size</Reset>
+          {sizes.map((size, index) => (
+            <SizeButton
+              key={size}
+              isSelected={filter.includes(index)}
+              onClick={() => dispatch(toggleFilter(index, category))}
+            >
+              {size}
+            </SizeButton>
+          ))}
+        </Size>
+      </Filter>
+    <List>
+        <Row>
+          {products
+            .filter((product) => product.sizes.some(
+              (size) => !filter.length
+                  || filter.some((filterIndex) => sizes[filterIndex] === size),
+            ))
+            .map((product) => (
+              <CardCol key={product.id}>
+                <Card image={getCoverImageUrl(product.images)}>
+                  <StyledLink to={product.id}>
+                    <Price currency={product.currency}>{product.price}</Price>
+                  </StyledLink>
+                </Card>
+              </CardCol>
+            ))}
+        </Row>
+      </List>
+  </Wrapper> */
+
+
+export default Products;

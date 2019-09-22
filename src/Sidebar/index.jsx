@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import media from '../utils/media';
@@ -39,32 +39,17 @@ const Wrapper = styled.div`
   `}
 `;
 
-class Sidebar extends Component {
-  constructor() {
-    super();
-    this.state = { isVisible: false };
-    this.toggle = this.toggle.bind(this);
-  }
 
-  toggle() {
-    this.setState((prevState) => ({
-      isVisible: !prevState.isVisible,
-    }));
-  }
-
-  render() {
-    const { isVisible } = this.state;
-    return (
-      <Aside>
-        <Logo />
-        <ToggleButton toggle={this.toggle} />
-        <Wrapper isVisible={isVisible}>
-          <Search />
-          <Navigation />
-        </Wrapper>
-      </Aside>
-    );
-  }
-}
-
-export default Sidebar;
+export default () => {
+  const [isVisible, setVisible] = useState(false);
+  return (
+    <Aside>
+      <Logo />
+      <ToggleButton toggle={() => { setVisible(!isVisible); }} />
+      <Wrapper isVisible={isVisible}>
+        <Search />
+        <Navigation />
+      </Wrapper>
+    </Aside>
+  );
+};

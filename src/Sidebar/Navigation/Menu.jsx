@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import media from '../../utils/media';
@@ -45,30 +45,17 @@ const Subcategories = styled.nav`
   `}
 `;
 
-class Menu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { isOpened: false };
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState((prevState) => ({ isOpened: !prevState.isOpened }));
-  }
-
-  render() {
-    const { isOpened } = this.state;
-    const { title, children } = this.props;
-    return (
-      <div>
-        <Button isOpened={isOpened} onClick={this.toggle}>
-          {title}
-        </Button>
-        {isOpened
-          && <Subcategories>{children}</Subcategories>}
-      </div>
-    );
-  }
-}
-
-export default Menu;
+export default (props) => {
+  const [isOpened, setIsOpened] = useState(false);
+  const { title, children } = props;
+  const toggle = () => { setIsOpened(!isOpened); };
+  return (
+    <div>
+      <Button isOpened={isOpened} onClick={toggle}>
+        {title}
+      </Button>
+      {isOpened
+        && <Subcategories>{children}</Subcategories>}
+    </div>
+  );
+};
