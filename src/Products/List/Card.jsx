@@ -20,22 +20,9 @@ const Wrapper = styled.div`
   `}
 `;
 
-// const Sale = styled(Label)`
-//   position: absolute;
-//   top: 20px;
-//   right: 20px;
-//   padding: 10px 25px;
-//   ${media.small`
-//     top: 20px;
-//     right: 20px;
-//     padding: 5px 20px;
-//   `}
-// `;
-
 export default ({ image, children }) => (
   <Wrapper>
     <Image src={image} />
     {children}
-    {/* {props.isSale && <Sale>Sale</Sale>} */}
   </Wrapper>
 );

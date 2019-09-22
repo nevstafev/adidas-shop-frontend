@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Cover from './Cover';
@@ -17,39 +17,25 @@ const ThumbImage = styled(Image)`
   max-height: 100px;
 `;
 
-class Carousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: 0,
-    };
-    this.handleSelect = this.handleSelect.bind(this);
-  }
+const Carousel = ({ images }) => {
+  const [selected, setSelected] = useState(0);
 
-  handleSelect(selected) {
-    this.setState({ selected });
-  }
-
-  render() {
-    const { selected } = this.state;
-    const { images } = this.props;
-    return (
-      <Wrapper>
-        <Cover image={images[selected]} />
-        <Thumbnails>
-          {images.map((img, index) => (
-            <Button
-              key={img}
-              isSelected={index === selected}
-              onClick={() => this.handleSelect(index)}
-            >
-              <ThumbImage src={img} />
-            </Button>
-          ))}
-        </Thumbnails>
-      </Wrapper>
-    );
-  }
-}
+  return (
+    <Wrapper>
+      <Cover image={images[selected]} />
+      <Thumbnails>
+        {images.map((img, index) => (
+          <Button
+            key={img}
+            isSelected={index === selected}
+            onClick={() => setSelected(index)}
+          >
+            <ThumbImage src={img} />
+          </Button>
+        ))}
+      </Thumbnails>
+    </Wrapper>
+  );
+};
 
 export default Carousel;

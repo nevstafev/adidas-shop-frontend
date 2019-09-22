@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import media from '../../utils/media';
 import { getImageUrl } from '../../utils/image';
@@ -55,69 +55,41 @@ const Button = styled.button`
   `};
 `;
 
-class Show extends Component {
-  componentDidMount() {
-    const { loadItemInfo, path } = this.props;
-    loadItemInfo(path);
-  }
+const Show = (props) => {
+  const { visibleItem } = useSelector((state) => state);
+  const { match: { url: path } } = props;
+  const dispatch = useDispatch();
+  useEffect(() => { dispatch(fetchItem(path)); }, [path]);
 
-  componentDidUpdate(prevProps) {
-    const { path } = this.props;
-    if (path !== prevProps.path) {
-      const { loadItemInfo } = this.props;
-      loadItemInfo(path);
-    }
-  }
-
-  render() {
-    const {
-      isFetching, title, currency, price, images, description,
-    } = this.props;
-    return (
-      isFetching !== true && (
-        <Wrapper>
-          <Product>
-            <Header
-              title={title}
-              currency={currency}
-              price={price}
-            />
-            <Carousel images={images.map(getImageUrl)} />
-            <Description text={description} />
-          </Product>
-          <ButtonWrapper>
-            <Button>Buy now</Button>
-          </ButtonWrapper>
-        </Wrapper>
-      )
-    );
-  }
-}
-
-const mapStateToProps = (state, ownProps) => {
-  const { visibleItem } = state;
   const {
-    title, currency, price, images, description,
+    title, currency, price, images, description, isFetching,
   } = visibleItem.item || {
     title: '',
     currency: '',
     price: '',
     images: [],
     description: '',
+    isFetching: false,
   };
-  return {
-    title,
-    currency,
-    price,
-    images,
-    description,
-    path: ownProps.match.url,
-    isFetching: visibleItem.isFetching,
-  };
+
+  return (
+    isFetching !== true && (
+      <Wrapper>
+        <Product>
+          <Header
+            title={title}
+            currency={currency}
+            price={price}
+          />
+          <Carousel images={images.map(getImageUrl)} />
+          <Description text={description} />
+        </Product>
+        <ButtonWrapper>
+          <Button>Buy now</Button>
+        </ButtonWrapper>
+      </Wrapper>
+    )
+  );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  loadItemInfo: (path) => dispatch(fetchItem(path)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Show);
+export default Show;
