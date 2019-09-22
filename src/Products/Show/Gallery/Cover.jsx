@@ -16,10 +16,10 @@ const ImageWrapper = styled.div`
 `;
 
 export default (props) => {
-  const { images } = props;
+  const { image } = props;
   return (
     <ImageWrapper>
-      <Image src={images} />
+      <Image src={image} />
     </ImageWrapper>
   );
 };
