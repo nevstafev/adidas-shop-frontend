@@ -59,7 +59,7 @@ const Show = (props) => {
   const { visibleItem } = useSelector((state) => state);
   const { match: { url: path } } = props;
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(fetchItem(path)); });
+  useEffect(() => { dispatch(fetchItem(path)); }, [path, dispatch]);
 
   const {
     title, currency, price, images, description, isFetching,

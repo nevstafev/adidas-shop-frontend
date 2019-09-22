@@ -107,7 +107,7 @@ const Products = (props) => {
     filter: [],
   };
 
-  useEffect(() => { dispatch(fetchProducts(category)); });
+  useEffect(() => { dispatch(fetchProducts(category)); }, [category, dispatch]);
 
   return (
     <Wrapper>
