@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-flexbox-grid';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ import { getCoverImageUrl } from '../../utils/image';
 import Card from './Card';
 import Button from './Filters/Button';
 import Price from '../../components/Price';
-import { toggleFilter, resetFilter } from '../../actions';
+import { fetchProducts, toggleFilter, resetFilter } from '../../actions';
 
 const Wrapper = styled.main`
   background-color: #ffffff;
@@ -94,7 +94,7 @@ const CardCol = ({ children }) => (
 );
 
 const Products = (props) => {
-  const category = props.match.url;
+  const { match: { url: category } } = props;
   const productsByCategory = useSelector((state) => state.productsByCategory);
   const dispatch = useDispatch();
 
@@ -107,6 +107,7 @@ const Products = (props) => {
     filter: [],
   };
 
+  useEffect(() => { dispatch(fetchProducts(category)); }, [category]);
 
   return (
     <Wrapper>
@@ -146,41 +147,5 @@ const Products = (props) => {
     </Wrapper>
   );
 };
-/* <Wrapper>
-    <Filter>
-        <Icon />
-        <Size>
-          <Reset onClick={() => dispatch(resetFilter(category))}>Size</Reset>
-          {sizes.map((size, index) => (
-            <SizeButton
-              key={size}
-              isSelected={filter.includes(index)}
-              onClick={() => dispatch(toggleFilter(index, category))}
-            >
-              {size}
-            </SizeButton>
-          ))}
-        </Size>
-      </Filter>
-    <List>
-        <Row>
-          {products
-            .filter((product) => product.sizes.some(
-              (size) => !filter.length
-                  || filter.some((filterIndex) => sizes[filterIndex] === size),
-            ))
-            .map((product) => (
-              <CardCol key={product.id}>
-                <Card image={getCoverImageUrl(product.images)}>
-                  <StyledLink to={product.id}>
-                    <Price currency={product.currency}>{product.price}</Price>
-                  </StyledLink>
-                </Card>
-              </CardCol>
-            ))}
-        </Row>
-      </List>
-  </Wrapper> */
-
 
 export default Products;
