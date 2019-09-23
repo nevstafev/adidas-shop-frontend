@@ -34,9 +34,6 @@
     "prepush": "npm run lint",
     "deploy": "npm run build && now build -p -t $NOW_TOKEN"
   },
-  "now": {
-    "name": "nevstafev-adidas-shop"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
