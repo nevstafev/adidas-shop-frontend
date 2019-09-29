@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src --ext=js,jsx",
     "prepush": "npm run lint",
-    "deploy": "npm run build && now build -p -t $NOW_TOKEN"
+    "deploy": "now -p -t $NOW_TOKEN"
   },
   "browserslist": {
     "production": [
